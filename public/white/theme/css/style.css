@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
 /*
 This files contents are outlined below.
 01. BODY 
@@ -1167,7 +1167,7 @@ textArea.form-flat {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/my-pict.jpg);
+  background-image: url(../../../images/main-pic.jpg);
   position: absolute;
   left: 0;
   top: 0;
@@ -1180,7 +1180,7 @@ textArea.form-flat {
   }
 }
 .my-profile .my-pict .overfly {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.5);
   position: absolute;
   width: 100%;
   left: 0;
@@ -1909,3 +1909,6 @@ textArea.form-flat {
   background: #ffffff;
   color: #000000;
 }
+
+
+/* renewal v 1.0*/

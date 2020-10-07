@@ -1,4 +1,5 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjp.css');
 /*
 This files contents are outlined below.
 01. BODY 
@@ -31,7 +32,7 @@ This files contents are outlined below.
 body {
   background: #ffffff;
   color: #7d7d7d;
-  font-family: 'Open Sans';
+  font-family: 'Noto Sans Japanese',   sans-serif;
   line-height: 2;
   font-size: 13px;
   position: relative;
@@ -1167,7 +1168,7 @@ textArea.form-flat {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../images/my-pict.jpg);
+  background-image: url(../../../images/main-pic_b.jpg);
   position: absolute;
   left: 0;
   top: 0;
@@ -1396,7 +1397,7 @@ textArea.form-flat {
   left: 0;
 }
 .chart .percent {
-  color: #000000;
+  color: #FFF;
   display: inline-block;
   line-height: 110px;
   z-index: 2;
@@ -1908,4 +1909,19 @@ textArea.form-flat {
 .social-links a:hover {
   background: #ffffff;
   color: #000000;
+}
+
+/* renewal v 1.0*/
+h1.wf-notosansjapanese,
+h2.wf-notosansjapanese,
+h3.wf-notosansjapanese,
+h4.wf-notosansjapanese {
+  font-family: 'Noto Sans Japanese',   sans-serif;
+  font-weight: 400;
+}
+.wf-notosansjapanese,
+p.wf-notosansjapanese,
+a.wf-notosansjapanese {
+  font-family: 'Noto Sans Japanese',   sans-serif;
+  font-weight: 400;
 }

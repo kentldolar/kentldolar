@@ -14,13 +14,9 @@
     initBtnFile();
     initMap();
     initHold();
-    initCaptcha();
     initAjaxContactForm();
     initAjaxUploader();
   });
-
-
-
 
   //Run function When PACE (page loader) hide
   Pace.on('hide', function() {
@@ -40,28 +36,60 @@
 
   // ajax contact form
   function initAjaxContactForm() {
-    if ($('#contactForm, #hireForm').length > 0) {
-      $('#contactForm, #hireForm').validate();
-      $('#contactForm, #hireForm').submit(function() {
+    if ($('#contactForm').length > 0) {
+
+      $('#contactForm').validate();
+      $('#contactForm').submit(function() {
         var el = $(this);
         if (el.valid()) {
-          var params = $(this).serialize();
+          var fulname = $(this).find('#ful1').val();
+          var email = $(this).find('#eml1').val();
+          var mess = $(this).find('#mes1').val();
+          var recaptcha = $(this).find('.g-recaptcha-response').val();
+          
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
           $.ajax({
             type: 'POST',
-            data: params,
-            url: "php/sending_mail.php",
+            statusCode: {
+              500: function(xhr) {
+                if(window.console) console.log(xhr.responseText);
+              }
+            },
+            data: {
+              fullname: fulname,
+              email: email,
+              message: mess,
+              recaptcha: recaptcha
+            },
+            url: "sendmail",
             beforeSend: function() {
               el.find('.preload-submit').removeClass('hidden');
               el.find('.message-submit').addClass('hidden');
             },
             success: function(res) {
+
+              res = JSON.stringify(res);
               res = jQuery.parseJSON(res);
               setTimeout(function() {
                 el.find('.preload-submit').addClass('hidden');
-                if (res.error === null) {
+                
+                if (res.msg) {
+                  grecaptcha.reset(widgetId1);
                   el.trigger('reset');
+                  if(res.msg == 'Thanks, I will get back to you ASAP') {
+                    res.msg = 'ありがとうございます。メールが送信されました。';
+                  }
                   el.find('.message-submit').html(res.msg).removeClass('hidden');
                 } else {
+                  if(res.error == 'error : Please complete the recaptcha to submit the form.') {
+                    res.error = 'エラー：フォームを送信するために要約を完成してください。';
+                  }else if(res.error == 'error : email not sent') {
+                    res.error = 'エラー：メールが送信されていません';
+                  }
                   el.find('.message-submit').html(res.error).removeClass('hidden');
                 }
               }, 1000)
@@ -75,100 +103,78 @@
 
   // ajax Uploader file
   function initAjaxUploader() {
-    if ($('#upload-btn').length > 0) {
-
-    var btn = document.getElementById('upload-btn'),
-            wrap = document.getElementById('pic-progress-wrap'),
-            picBox = document.getElementById('picbox'),
-            errBox = document.getElementById('errormsg');
-
-    var uploader = new ss.SimpleUpload({
-      button: btn,
-      url: 'php/upload.php',
-      progressUrl: 'assets/plugins/Simple-Ajax-Uploader/extras/uploadProgress.php',
-      name: 'fileatt',
-      multiple: false,
-      maxUploads: 2,
-      maxSize: 200,
-      queue: false,
-      allowedExtensions: ['pdf'],
-      debug: true,       hoverClass: 'btn-hover',
-      focusClass: 'active',
-      disabledClass: 'disabled',
-      responseType: 'json',
-      onSubmit: function(filename, ext) {
-        var prog = document.createElement('div'),
-                outer = document.createElement('div'),
-                bar = document.createElement('div'),
-                size = document.createElement('div'),
-                self = this; 
-        prog.className = 'prog';
-        size.className = 'size';
-        outer.className = 'progress';
-        bar.className = 'bar';
-
-        outer.appendChild(bar);
-        prog.appendChild(size);
-        prog.appendChild(outer);
-        wrap.appendChild(prog); // 'wrap' is an element on the page
-
-        self.setProgressBar(bar);
-        self.setProgressContainer(prog);
-        self.setFileSizeBox(size);
-
-        errBox.innerHTML = ''; 
-      },
-      onSizeError: function(filename, fileSize) {
-        errBox.innerHTML = 'Max size 200K';
-      },
-      onExtError: function(filename, extension) {
-        errBox.innerHTML = "File extension not permitted";
-      },
-      onError: function(filename, errorType, status, statusText, response, uploadBtn) {
-        errBox.innerHTML = statusText;
-      },
-      onComplete: function(file, response) {
-        if (!response) {
-          errBox.innerHTML = 'Unable to upload file';
+    if ($('#hireForm').length > 0) {
+      $('#hireForm').validate();
+      $('#hireForm').submit(function() {
+        var el = $(this);
+        if (el.valid()) {
+          var formData = new FormData($(this)[0]);
+          formData.append('fulname',  $(this).find('#ful1').val());
+          formData.append('email', $(this).find('#eml1').val());
+          formData.append('mess', $(this).find('#mes1').val());
+          formData.append('recaptcha', $(this).find('.g-recaptcha-response').val());
+          formData.append('fileatt', $('#filat')[0].files[0]); 
+          formData.append('fileattsize', $('#filat')[0].files[0].size); 
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            statusCode: {
+              500: function(xhr) {
+                if(window.console) console.log(xhr.responseText);
+              }
+            },
+            processData: false,
+            contentType: false,
+            cache : false,
+            dataType : 'json',
+            type: 'POST',
+            data: formData,
+            url: "upload",
+            beforeSend: function() {
+              el.find('.preload-submit').removeClass('hidden');
+              el.find('.message-submit').addClass('hidden');
+            },
+            success: function(upl) {
+            upl = JSON.stringify(upl);
+            upl = jQuery.parseJSON(upl);
+              setTimeout(function() {
+                el.find('.preload-submit').addClass('hidden');
+                
+                if (upl.msg) {
+                  grecaptcha.reset(widgetId2);
+                  el.trigger('reset');
+                  if(upl.msg == 'Thanks, I will get back to you ASAP') {
+                    upl.msg = 'ありがとうございます。メールが送信されました。';
+                  }
+                  el.find('.message-submit').html(upl.msg).removeClass('hidden');
+                } else {
+                  if(upl.error == 'error : Please complete the recaptcha to submit the form.') {
+                    upl.error = 'エラー：フォームを送信するために要約を完成してください。';
+                  }else if(upl.error == 'error : email not sent') {
+                    upl.error = 'エラー：メールが送信されていません';
+                  }else if(upl.error == 'error : The file must be less than 200KB'){
+                    upl.error = 'エラー：ファイルは200KB未満でなければなりません';
+                  }
+                  el.find('.message-submit').html(upl.error).removeClass('hidden');
+                }
+              }, 1000)
+            }        
+          });
         }
-        if (response.success === true) {
-          picBox.innerHTML = '<i class="fa fa-file-pdf-o"></i> &nbsp;' + response.file;
-          $('#file-att').val(response.file);
-        } else {
-          if (response.msg) {
-            errBox.innerHTML = response.msg;
-          } else {
-            errBox.innerHTML = 'Unable to upload file';
-          }
-        }
-      }
-    });
-    }
-  }
-
-  //captcha configuration
-  function initCaptcha() {
-    $('#mycaptcha').simpleCaptcha({
-      allowRefresh: false,
-      scriptPath: "assets/plugins/simpleCaptcha/simpleCaptcha.php"
-    });
-
-    $('#mycaptcha').bind('ready.simpleCaptcha', function(hashSelected) {
-      $('#captcha1,#captcha2').html($('#mycaptcha-wrap').html()).find('.mycaptcha1').removeAttr('id');
-      $('#captcha1,#captcha2').find('.captchaImages img.captchaImage').click(function() {
-        $('#captcha1,#captcha2').find('.captchaImages img.captchaImage').removeClass('simpleCaptchaSelected');
-        $(this).addClass('simpleCaptchaSelected');
-        $('.simpleCaptchaInput').val($(this).data('hash'));
+        return false;
       });
-    });
+    }
   }
 
   //Typed Animation
   function initTyped() {
     $("#typed").typed({
-      strings: ["A Designer", "A Freelancer", "A Marketer", "A Developer"],
+      strings: ["夢想家", "開発者", "思想家"],
       // typing speed
-      typeSpeed: 300,
+      typeSpeed: 700,
       // time before typing starts
       startDelay: 100,
       // backspacing speed
@@ -235,7 +241,8 @@
   //Chart
   function initEasyChart() {
     $('.chart').easyPieChart({
-      easing: 'easeOutBounce',
+      animate: ({ duration: 5000, enabled: true }),
+      easing: 'easeOutCirc',
       barColor: '#1e1e1e',
       trackColor: '#323232',
       scaleColor: '#fff',
@@ -243,6 +250,31 @@
         $(this.el).find('.percent').text(Math.round(percent));
       }
     });
+
+    // Skills Progress Bar
+      // number
+      $('.bar_progress').each(function() {
+        var bar_value = $(this).attr('aria-valuenow') + '%';
+        var test =     $(this).attr('aria-valuenow');            
+        $(this).stop().css("width", 0).animate({ width: bar_value }, { duration: 5000, easing: 'easeOutCirc', 
+          progress: function(promise, progress, ms) {
+
+          }
+        });
+      });
+
+      // line-bar
+      $('small').each(function() {
+        var bar_value = $(this).attr('aria-valuenow') + '%';
+        var test =     $(this).attr('aria-valuenow');            
+        $(this).stop().css('visibility', 'visible').animate({opacity: 1.0}, { duration: 5000, easing: 'easeOutCirc', 
+          progress: function(promise, progress, ms) {
+            $(this).text(Math.round(progress * test) + '%');
+          }
+        });
+      });
+
+
   }
 
   //Click Envents
@@ -328,7 +360,7 @@
   //Map
   function initMap() {
     $('#map-contact').gmap({
-      'center': '-6.600000, 106.800000',
+      'center': '35.715745, 139.655168',
       'zoom': 15,
       scrollwheel: false,
       'disableDefaultUI': false,
@@ -336,7 +368,7 @@
         var self = this;
         self.addMarker({
           'position': this.get('map').getCenter(),
-          icon: 'assets/theme/images/marker.png'
+          icon: '../../../images/marker.png'
         }).click(function() {
           self.openInfoWindow({
             'content': $('.map-contact-body').html()

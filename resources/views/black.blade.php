@@ -3,32 +3,54 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>KENT LOYD DOLAR - RESUME AND PORTFOLIO</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}"> 
+        <title>ケントロイドドラール - 履歴書とポートフォリオ</title>
 
         <!--favicon-->
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
-        <link rel="icon" href="{{ asset('images/logo.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('public/images/logo.png') }}">
+        <link rel="icon" href="{{ asset('public/images/logok_rda_icon.ico') }}">
 
         <!--pace (page loader) style-->
-        <link href="{{ asset('plugins/pace/pace.css') }}" rel="stylesheet">
-        <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
+        <link href="{{ asset('public/plugins/pace/pace.css') }}" rel="stylesheet">
+        <script src="{{ asset('public/plugins/pace/pace.min.js') }}"></script>
 
         <!-- Bootstrap -->
-        <link href="{{ asset('plugins/bootstrap-3.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/bootstrap-3.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Icons -->
-        <link href="{{ asset('plugins/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
         <!-- typed style -->
-        <link href="{{ asset('plugins/typed/typed.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/typed/typed.css') }}" rel="stylesheet">
         <!-- popup style-->
-        <link href="{{ asset('plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
         <!-- simple Captcha-->
-        <link href="{{ asset('plugins/simpleCaptcha/jquery.simpleCaptcha.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/simpleCaptcha/jquery.simpleCaptcha.css') }}" rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+        </script>
+        <script type="text/javascript">
+          var verifyCallback = function(response) {
+            alert(response);
+          };
+          var widgetId1;
+          var widgetId2;
+          var onloadCallback = function() {
+            // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+            // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+            widgetId1 = grecaptcha.render(document.getElementById('captcha1'), {
+              'sitekey' : "{{env('CAPTCHA_KEY')}}",
+              'theme' : 'dark'
+            });
+            widgetId2 = grecaptcha.render(document.getElementById('captcha2'), {
+              'sitekey' : "{{env('CAPTCHA_KEY')}}",
+              'theme' : 'dark'
+            });
+          };
+        </script>
 
         <!-- Themes styles-->
-        <link href="{{ asset('white/theme/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/black/theme/css/style.css') }}" rel="stylesheet">
         <!-- black skin-->
-        <link href="{{ asset('black/theme/css/skin-black.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/black/theme/css/skin-black.css') }}" rel="stylesheet">
 
     </head>
     <body  data-spy="scroll" data-target=".menu-area" data-offset="200">
@@ -39,14 +61,14 @@
       <header class="main-header" id="home">
         <div class="content-table header-content-fixed ">
           <div class="whoim">
-            <div class="box-line text-uppercase text-bold">
-              Who I Am
+            <div class="box-line text-uppercase text-bold wf-notosansjapanese">
+              自己紹介
             </div>
           </div>
           <div class="v-content">
             <div class="container">
-              <h1 class="text-uppercase color-dark name">i’m Kent Loyd Dolar</h1>
-              <h4  class="text-uppercase color-dark font-alt job"><span id="typed" class="typed"></span></h4>
+              <h1 class="text-uppercase color-dark name wf-notosansjapanese">ケントロイドドラールと申します</h1>
+              <h4  class="text-uppercase color-dark font-alt job wf-notosansjapanese"><span id="typed" class="typed wf-notosansjapanese"></span></h4>
             </div>
           </div>
         </div>
@@ -62,7 +84,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <ul class="breadcrumb main-nav no-space">
-                    <li class="link-inpage"><a href="#contact" id="hireme-tab" class="link-inpage"><i class="fa fa-briefcase"></i> Hire Me Now</a></li>
+                    <li class="link-inpage"><a href="#contact" id="hireme-tab" class="link-inpage"><i class="fa fa-briefcase"></i> 今すぐ会いましょう</a></li>
                   </ul>
                 </div>
                 <div class="col-md-6">
@@ -78,19 +100,19 @@
                 <div class="col-md-3">
                   <ul class="breadcrumb main-nav no-space">
                     <li>
-                      <a href="#" ><i class="fa fa-facebook"></i></a>
+                      <a href="https://www.facebook.com/kent.dolar25" ><i class="fa fa-facebook"></i></a>
                     </li>
                     <li>
-                      <a href="#"  ><i class="fa fa-google"></i></a>
+                      <a href="https://codepen.io/kentcodes/"  ><i class="fa fa-codepen"></i></a>
                     </li>
                     <li>
-                      <a href="#"  ><i class="fa fa-twitter"></i></a>
+                      <a href="https://twitter.com/kelocreate"  ><i class="fa fa-twitter"></i></a>
                     </li>
                     <li>
-                      <a href="#" ><i class="fa fa-linkedin"></i></a>
+                      <a href="https://www.linkedin.com/in/dolarkent/" ><i class="fa fa-linkedin"></i></a>
                     </li>
                     <li>
-                      <a href="#" ><i class="fa fa-github"></i></a>
+                      <a href="https://github.com/CpEKent" ><i class="fa fa-github"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -106,28 +128,29 @@
           <div class="my-pict" >
             <div class="overfly">
               <div class="text-botttom">
-                <h2 class="text-uppercase color-dark text-bold">Jhone doe</h2>
-                <h5 class="text-uppercase color-dark font-alt ">Live On Earth</h5>
+                <h2 class="text-uppercase color-dark text-bold wf-notosansjapanese">ケントロイドドラール</h2>
+                <h5 class="text-uppercase color-dark font-alt wf-notosansjapanese">奉仕するために生きる</h5>
               </div>
             </div>
           </div>
           <div class="my-desc">
             <div class="bg-secondary clearfix">
               <div class="inner-text">
-                <h3 class=" color-dark no-margin-top">Hello There!</h3>
-                <p >I discovered my passion for design when I was a sophomore in High School; It was then when it became clear what I wanted to do for a living. I pursued my career at the amazing Valencia College where I started my major in Print Design. A year later I took a begginer’s Web class, where I discovered the love for code. After that, I switched my major to Interactive Design and started the never-ending journey of becoming a web developer along with sharpening my eye for design.</p>
-                <p class="no-margin">In 2013 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Ut enim ad minim veniam, quis nostrud exercitation quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h3 class=" color-dark no-margin-top wf-notosansjapanese">こんにちは！</h3>
+                <p>私は彼らに手を貸したりサービスを提供したり他の人々を奮い立たせたいと思っているすべての人々とつながるためにこのウェブサイトを作成しました。 ヘルプ/サービスとインスピレーションを探している人々のためのハブのように。私とつながりたいと思ったことがあるなら、私は先を見越して最善を尽くします。</p>
+                <p>コンピューターに対する私の情熱を発見たのは、私がまだ幼いころでした。そして、将来の仕事を考えた時、それがはっきりと分かりました。私はノートルダム・オブ・ダディアンガス大学て、コンピュータ工学を専攻し、キャリアを追求しはじめました。最終学年の時に、私は初心者向けのオンラインWebクラスを受講し, Web開発が大好きだと思いました。そして、システムサービスに対する目を研ぎ澄ますとともに、Web開発者になるという終わりのない旅を始めました。</p>
+                <p class="no-margin">2016年、私は本物のWeb開発者になりました。現時点で私は自分の才能やサービスを世界中に広める必要があるすべての人々を助けることができます。</p>　
               </div>
             </div>
             <div class="bg-dark clearfix">
               <div class="inner-text">
                 <p class="no-margin color-light ">
-                  <strong class="fix-width-100"><i class="fa fa-calendar margin-right-5"></i> Birthdate</strong> : 09/11/1990<br/>
-                  <strong class="fix-width-100"><i class="fa fa-skype margin-right-5"></i> Skype</strong> : usename.fake<br/>
-                  <strong class="fix-width-100"><i class="fa fa-phone margin-right-5"></i> Phone</strong> : + 123-456-789-426<br/>
-                  <strong class="fix-width-100"><i class="fa fa-envelope margin-right-5"></i> Email</strong> : someone@domain.me<br/>
-                  <strong class="fix-width-100"><i class="fa fa-globe margin-right-5"></i> Website</strong> : www.someonedomain.me<br/>
-                  <strong class="fix-width-100"><i class="fa fa-location-arrow margin-right-5"></i> Adresse</strong> : 1234 Jalan Road, Fake City, IS 421 123.<br/>
+                  <strong class="fix-width-100 wf-notosansjapanese"><i class="fa fa-calendar margin-right-5"></i> 生年月日</strong> : 09/25/1991<br/>
+                  <?php /*<strong class="fix-width-100"><i class="fa fa-skype margin-right-5"></i> Skype</strong> : usename.fake<br/> */ ?>
+                  <strong class="fix-width-100 wf-notosansjapanese"><i class="fa fa-phone margin-right-5"></i> 電話</strong> : + 070-6511-9523<br/>
+                  <strong class="fix-width-100 wf-notosansjapanese"><i class="fa fa-envelope margin-right-5"></i> eメール</strong> : kentldolar@gmail.com<br/>
+                  <strong class="fix-width-100 wf-notosansjapanese"><i class="fa fa-globe margin-right-5"></i> サイト</strong> : www.kentscsv.com<br/>
+                  <strong class="fix-width-100 wf-notosansjapanese"><i class="fa fa-location-arrow margin-right-5"></i> 現住所</strong> : 〒165-0027 東京都、中野区、野方2丁目38-11<br/>
                 </p>
               </div>
             </div>
@@ -140,19 +163,19 @@
             <li class="col-sm-4 no-padding">
               <div class="box">
                 <div class="ic"><i class="fa fa-code"></i></div>
-                <h5 class="text-uppercase color-dark">Web Developer</h5>
+                <h5 class="text-uppercase color-dark　wf-notosansjapanese">ウェブ開発者</h5>
               </div>
             </li>
             <li class="col-sm-4 no-padding">
               <div class="box">
                 <div class="ic"><i class="fa fa-laptop"></i></div>
-                <h5 class="text-uppercase color-dark">Web Designer</h5>
+                <h5 class="text-uppercase color-dark　wf-notosansjapanese">ウェブデザイナー</h5>
               </div>
             </li>
             <li class="col-sm-4 no-padding">
               <div class="box ">
                 <div class="ic"><i class="fa fa-bar-chart"></i></div>
-                <h5 class="text-uppercase color-dark">Web Marketer</h5>
+                <h5 class="text-uppercase color-dark　wf-notosansjapanese">Webフルスタック</h5>
               </div>
             </li>
           </ul>
@@ -166,7 +189,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Employment</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin　wf-notosansjapanese">職歴</h2>
               <div class="title-icon"> <i class="fa fa-briefcase"></i> </div>
             </div>
           </div>
@@ -179,30 +202,34 @@
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">01</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Web Design</h5>
-                  <p class="font-alt color-dark">Google Inc</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p class="font-alt color-dark">  1999-2001</p>
+                  <h5 class="text-uppercase color-dark text-bold wf-notosansjapanese">技術開発</h5>
+                  <p class="font-alt color-dark　wf-notosansjapanese"><a href="http://diamondhead.jp/company/">ダイアモンドヘッド株式会社</a>、〒108-0073 東京都港区三田2-7-13 TDS三田ビル6・7F</p>
+                  <p>フロントエンドWeb開発者として、 私は私たちのさまざまなオンラインショップのためのウェブサイトを作成、開発、そして維持するように割り当てられました、 
+企業の電子商取引システムを使用しています。アドビフレームワーク、PHP、HTML5 / CSS3、JavaScript / jQueryを自社システムに活用と
+Git Bitbucket、Sourcetree、Teratermの助けを借りて、タスクをより効率的でより良いものにします。
+</p>
+                  <p class="font-alt color-dark wf-notosansjapanese">  2017年12月　- 現在</p>
                 </div>
               </li>
               <li>
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">02</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Web Developer</h5>
-                  <p class="font-alt color-dark">Google Inc</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p class="font-alt color-dark"> 1999-2001</p>
+                  <h5 class="text-uppercase color-dark text-bold　wf-notosansjapanese">システムエンジニア</h5>
+                  <p class="font-alt color-dark　wf-notosansjapanese"><a href="http://ring-group.jp/">株式会社リングシステムソリューションズ </a>、〒110-0016　東京都台東区台東2-1-1　東秋葉原ビル6階</p>
+                  <p class="wf-notosansjapanese">Webおよびシステム開発者として、 私はHTML 5、CSS 3、Javascript、jQuery、およびPHPなどの多分野言語プログラムに統合されています。Moodle、Laravel、Wordpress、Microsoftなど、お客様のサービスにさまざまなフレームワークとデータベースも使用しています。
+Azure、SQL Server、MySQLなどとRedmineなどの情報管理システムの助けを借りて</p>
+                  <p class="font-alt color-dark wf-notosansjapanese"> 2016年12月 - 2017年12月</p>
                 </div>
               </li>
               <li>
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">03</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Digital Marketing</h5>
-                  <p class="font-alt color-dark">Google Inc</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p class="font-alt color-dark"> 1999-2001</p>
+                  <h5 class="text-uppercase color-dark text-bold　wf-notosansjapanese">技術サポートエンジニア</h5>
+                  <p class="font-alt color-dark　wf-notosansjapanese"><a href="https://www.citigroup.jp/en/about/access-ses.html">シティグループ・ジャパン・ホールディングス合同会社</a>、 〒160-8812 東京都新宿区新宿6-27-30 新宿イーストサイドスクエア 地図 </p>
+                  <p>正式なプロセスと厳格なセキュリティおよび手続きを備えた企業の銀行環境でネットワーク接続の監視、サーバーの起動、システムテスト、追跡、エスカレート、インシデントレポート、文書化、その他、私はケーススタディ、知識共有、システム管理、証拠管理を行っています。システム文書およびコンピュータ技術サポート、<a href="https://www.skillhouse.co.jp/">スキルハウス・スタッフィング･ソリューションズ株式会社</a>の助けを借りて。</p>
+                  <p class="font-alt color-dark wf-notosansjapanese"> 2014年12月 - 2016年12月</p>
                 </div>
               </li>
             </ul>
@@ -213,7 +240,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Education</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin wf-notosansjapanese">学歴</h2>
               <div class="title-icon"> <i class="fa fa-graduation-cap"></i> </div>
             </div>
           </div>
@@ -225,23 +252,23 @@
                 <div class="ic"><i class="fa fa-graduation-cap"></i></div>
                 <div class="number font-alt">01</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Computer University</h5>
-                  <p class="font-alt color-dark">Bandung</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p class="font-alt color-dark">  1999-2001</p>
+                  <h5 class="text-uppercase color-dark text-bold">TOPA21世紀日本語学校</h5>
+                  <p class="font-alt color-dark">東京都杉並区高円寺北１丁目２１−３ <a href="http://www.topa21.co.jp/">ＴＯＰＡ２１世紀語学校</a>、 日本</p>
+                  <p>私はアルバイトをしながら日本で働くために日本語N3を勉強しました。私は今までとは異なる文化を持つさまざまな人々との出会いに出会い、友達を作りました。</p>
+                  <p class="font-alt color-dark">  2013年10月から2014年3月まで </p>
                 </div>
               </li>
               <li>
                 <div class="ic"><i class="fa fa-graduation-cap"></i></div>
                 <div class="number font-alt">02</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">TELKOM University</h5>
-                  <p class="font-alt color-dark">Bandung</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <p class="font-alt color-dark"> 1999-2001</p>
+                  <h5 class="text-uppercase color-dark text-bold">ノーター・デイム・オブ・ダディアンガス大学</h5>
+                  <p class="font-alt color-dark">マリストアベニュー、 ジェネラル・サントス、 9500 サウスコタバト <a href="http://www.nddu.edu.ph/">ノーター・デイム・オブ・ダディアンガス大学</a>, フィリピン</p>
+                  <p>私は5年以内にコンピュータ工学コースを勉強しました。私の最終論文は、周囲の温度と動きに応じた自動ファン制御に関するものです。 私はプロ意識、私が知っている偉大で知的な人々との友情を学びました。</p>
+                  <p class="font-alt color-dark">コンピュータ工学の理学士号 2007年から2012年まで</p>
                 </div>
               </li>
-              <li>
+              <?php /*<li>
                 <div class="ic"><i class="fa fa-graduation-cap"></i></div>
                 <div class="number font-alt">03</div>
                 <div class="desc">
@@ -250,7 +277,7 @@
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                   <p class="font-alt color-dark "> 1999-2001</p>
                 </div>
-              </li>
+              </li> */ ?>
             </ul>
           </div>
         </div> <!--END EDUCATION-->
@@ -259,7 +286,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Skills</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin wf-notosansjapanese">腕前</h2>
               <div class="title-icon"> <i class="fa fa-magic"></i> </div>
             </div>
           </div>
@@ -267,37 +294,38 @@
 
         <div class="container-medium">
           <!--SKIL CHART TOP-->
+          <!--SKIL CHART TOP-->
           <ul class="skill top list-unstyled clearfix">
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="96">
+                <span class="chart" data-percent="80" >
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase  color-dark">Php</div>
+                <div class="text-uppercase  color-dark">PHP</div>
               </div>
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="87">
+                <span class="chart" data-percent="60">
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase  color-dark">.NET</div>
+                <div class="text-uppercase  color-dark">C/C++</div>
               </div>
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="89">
+                <span class="chart" data-percent="50">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">MYSQL</div>
               </div>
-            </li>
+            </li>            
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-bottom">
                 <span class="chart" data-percent="70">
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase color-dark">ROR</div>
+                <div class="text-uppercase color-dark">JQUERY/JAVASCRIPT</div>
               </div>
             </li>
           </ul><!--END SKIL CHART TOP-->
@@ -306,15 +334,15 @@
           <ul class="skill bottom list-unstyled clearfix">
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right">
-                <span class="chart" data-percent="60">
+                <span class="chart" data-percent="60" >
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase  color-dark">Photoshop</div>
+                <div class="text-uppercase  color-dark">Adobe Photoshop</div>
               </div>
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right">
-                <span class="chart" data-percent="99">
+                <span class="chart" data-percent="80">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">HTML</div>
@@ -330,7 +358,7 @@
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box">
-                <span class="chart" data-percent="77">
+                <span class="chart" data-percent="55">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase color-dark">BOOTSTRAP</div>
@@ -341,28 +369,28 @@
 
           <!-- MORE SKILS -->
           <div class="title-border">
-            <h5 class="text-uppercase color-dark no-margin text-bold ">MORE SKILLS</h5>
+            <h5 class="text-uppercase color-dark no-margin text-bold wf-notosansjapanese">より多くの腕前</h5>
           </div>  
 
           <div class="row">
             <div class="col-sm-6">
               <ul class="list-unstyled list-progress">
                 <li>
-                  <div class="text-uppercase color-dark title "><span>Creative</span>  <small>80%</small></div>
+                  <div class="text-uppercase color-dark title"><span>クリエイティブ</span>  <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="80%"></div>
+                    <div class="line bar_progress" data-holdwidth="60%"  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Leadership   <small>60%</small></div>
+                  <div class="text-uppercase color-dark title">リーダーシップ   <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="60%"></div>
+                    <div class="line bar_progress" data-holdwidth="60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Communication   <small>70%</small></div>
+                  <div class="text-uppercase color-dark title">コミュニケーション   <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="70%" ></div>
+                    <div class="line bar_progress" data-holdwidth="60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
               </ul>
@@ -370,21 +398,21 @@
             <div class="col-sm-6">
               <ul class="list-unstyled list-progress">
                 <li>
-                  <div class="text-uppercase color-dark title">English <small>80%</small></div>
+                  <div class="text-uppercase color-dark title">英語 <small aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="80%" ></div>
+                    <div class="line bar_progress" data-holdwidth="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Spanish  <small>60%</small></div>
+                  <div class="text-uppercase color-dark title">日本語  <small aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="60%" ></div>
+                    <div class="line bar_progress" data-holdwidth="50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Indonesia  <small>70%</small></div>
+                  <div class="text-uppercase color-dark title">タガログ語、ビサヤ語、ヒラガイノン語  <small aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="70%" ></div>
+                    <div class="line bar_progress" data-holdwidth="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
               </ul>
@@ -397,9 +425,9 @@
         <div class="parallax-bg bg1" >
           <div class="container">
             <div class="padding30 text-center">
-              <a href="#" class="btn btn-flat-line btn-default light-font "><i class="fa fa-download"></i>  Download CV</a>
+              <a href="{{ asset('public/download/Resume15jp.pdf') }}" class="btn btn-flat-line btn-default light-font wf-notosansjapanese" target="_blank"><i class="fa fa-download"></i>CVをダウンロード</a>
               <span class="space-inline-15 hidden-xs"></span>
-              <a href="#" class="btn btn-flat-line btn-default light-font"><i class="fa fa-print"></i> Print CV</a>
+              <a href="javascript: w=window.open('{{ asset('public/download/Resume15jp.pdf') }}'); w.print(); " class="btn btn-flat-line btn-default light-font wf-notosansjapanese"><i class="fa fa-print"></i>CVを印刷</a>
             </div>
           </div>
         </div><!-- END DOWNLOAD & PRVIEW BTN -->
@@ -412,7 +440,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Portfolio</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin wf-notosansjapanese">ポートフォリオ</h2>
               <div class="title-icon"> <i class="fa fa-inbox"></i> </div>
             </div>
           </div>
@@ -420,20 +448,18 @@
 
         <!--List WOrk-->
         <div class="block-page" >
-
-
           <div class="container-medium clearfix">
             <div class="row list-work">
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p1.png" alt="">
+                    <img src="{{ asset('public/images/400x300jjhs.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p1.png" title="pic 02" class="galery-item" ><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300jjhs.png') }}" title="pic 02" class="galery-item" ><i class="fa fa-search-plus"></i></a>
+                        <a href="https://joloujapanhomespa.com/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://joloujapanhomespa.com/" class="project-title" target="_blank">Jolou Japan Home Spa (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -441,13 +467,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p2.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300kentscsv.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p2.jpg" title="pic 02" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300kentscsv.png') }}" title="pic 02" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://resume.kentscsv.com/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="http://resume.kentscsv.com/" class="project-title" target="_blank">Kent's CSV (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -455,13 +481,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p3.png" alt="">
+                    <img src="{{ asset('public/images/400x300tph.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p3.png" title="pic 03" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300tph.png') }}" title="pic 03" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://resume.kentscsv.com/tph/index" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="http://resume.kentscsv.com/tph/index" class="project-title" target="_blank">Times Plaza Hotel (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -469,13 +495,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p4.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300sanyo.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p4.jpg" title="pic 04" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300sanyo.png') }}" title="pic 04" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://sanyo-i.jp/s/customer/NewYearSale_tokushu" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://sanyo-i.jp/s/customer/NewYearSale_tokushu" class="project-title" target="_blank">Sanyo i-store (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -483,13 +509,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p6.png" alt="">
+                    <img src="{{ asset('public/images/400x300benexy.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p6.png" title="pic 05" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300benexy.png') }}" title="pic 05" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://ec.benexy.com/sp/renewal-campaign/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://ec.benexy.com/sp/renewal-campaign/" class="project-title" target="_blank">Benexy Online (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -497,13 +523,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p5.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300grurond.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p5.jpg" title="pic 06" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300grurond.png') }}" title="pic 06" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://test.grurond.com/lp/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="http://test.grurond.com/lp/" class="project-title" target="_blank">Grurond Online Store  (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -511,13 +537,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p1.png" alt="">
+                    <img src="{{ asset('public/images/400x300melrose.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p1.png"  title="pic 07" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300melrose.png') }}"  title="pic 07" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://store.melrose.co.jp/sp/martiniquepre_2018_summer_issue/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://store.melrose.co.jp/sp/martiniquepre_2018_summer_issue/" class="project-title" target="_blank">Melrose Online (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -525,13 +551,13 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p2.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300virtusize.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p2.jpg"  title="pic 08" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300virtusize.png') }}"  title="pic 08" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://sanyo-i.jp/s/customer/virtusize" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://sanyo-i.jp/s/customer/virtusize" class="project-title" target="_blank">Sanyo-i (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -539,24 +565,25 @@
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p3.png" alt="">
+                    <img src="{{ asset('public/images/400x300tegteg.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p3.png" title="pic 09" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300tegteg.png') }}" title="pic 09" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://onlinestore.tegteg.tokyo/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://onlinestore.tegteg.tokyo/" class="project-title" target="_blank">Tegteg Renewal 2018</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!--BTN SHOW MORE-->
-            <div class="box-btn-more"><a href="portfolio-list.html" class="btn btn-flat-line btn-link" id="more-work"> Show More</a></div>
+            <!-- <div class="box-btn-more"><a href="portfolio-list.html" class="btn btn-flat-line btn-link" id="more-work"> Show More</a></div> -->
           </div>
         </div><!--END List WOrk-->
 
         <!--TESTIMONIAL-->
+        <?php /*
         <div class="parallax-bg black-light bg2">
           <div class="container-medium">
             <div class="block-page ">
@@ -602,6 +629,7 @@
             </div>
           </div>
         </div><!--END TESTIMONIAL-->
+        */?>
       </section><!--END PORTFOLIO-->
 
       <!--BLOG-->
@@ -610,7 +638,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Blog</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin  wf-notosansjapanese">ブログ</h2>
               <div class="title-icon"> <i class="fa fa-comments-o"></i> </div>
             </div>
           </div>
@@ -622,59 +650,59 @@
             <ul class="list-unstyled list-blog">
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/1.jpg">&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943web.png') }}">&nbsp;
                     <div  class="blog-ic"><i class="fa fa-pencil"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">My Website Making</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 19th July 2012 </span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>Since then when in elementary I'm used to make a webpage using HTML and until in college using HTML is my easiest way to make my project in Online Technology Course.</p>
+                    <a href="https://kentoy-d-mytricks.blogspot.com/2012/07/mytricks-projects.html" class="btn btn-xs btn-flat-solid primary-btn">続きを読む</a>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/2.jpg" >&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943hobbies.png') }}" >&nbsp;
                     <div  class="blog-ic"><i class="fa fa-picture-o"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">Hobbies & Talents as a musician</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 15th May 2012</span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>GooD @ GuiTaR: It became my Hobby since I waS a TeenageR, My cousin a great artist introduce me to this kind of hobby, and now when iM playing I feel great. </p>
+                    <a href="https://kentoy-d-mytricks.blogspot.com/2012/05/mytrickshobbies.html" class="btn btn-xs btn-flat-solid primary-btn">続きを読む</a>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/4.jpg">&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943aboutme.png') }}">&nbsp;
                     <div  class="blog-ic"><i class="fa fa-camera-retro"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">About me</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 2nd May 2012</span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>Personality : Flexible in different areas,I want to learn everything (even it is not agreed to my skills and environment), easily get bored when I'm not doing anything, adjusting easily to the the team and I love to be at the group,I am friendly and peacemaker.</p>
+                    <a href="http://kentoy-d-mytricks.blogspot.com/2012/05/about-career-as-computer-engineer-like.html" class="btn btn-xs btn-flat-solid primary-btn">続きを読む</a>
                   </div>
                 </div>
               </li>
             </ul> <!--END LIST BLOG-->
 
             <!--BTN SHOW MORE-->
-            <div class="box-btn-more"><a href="blog-list.html" class="btn btn-flat-line btn-link" id="more-blog"> Show More</a></div>
+            <div class="box-btn-more"><a href="blog-list.html" class="btn btn-flat-line btn-link  wf-notosansjapanese" id="more-blog"> もっと見せる</a></div>
           </div>
         </div>
       </section> <!--END BLOG-->
@@ -685,7 +713,7 @@
         <div class=" shape-bottom">
           <div class="bg-secondary block-title">
             <div class="container">
-              <h2 class="text-uppercase color-dark text-bold no-margin">Contact</h2>
+              <h2 class="text-uppercase color-dark text-bold no-margin  wf-notosansjapanese">お問い合わせ</h2>
               <div class="title-icon"> <i class="fa fa-envelope-o"></i> </div>
             </div>
           </div>
@@ -696,76 +724,80 @@
             <div class="inner-contact clearfix ">
               <!--TABS CONTACT-->
               <ul id="myTab" class="nav nav-tabs flat-nav-tabs" role="tablist">
-                <li class="active"><a href="#tab0" role="tab" data-toggle="tab">Contact Me</a></li>
-                <li><a href="#tab1" role="tab" data-toggle="tab">Hire Me</a></li>
+                <li class="active wf-notosansjapanese"><a href="#tab0" role="tab" data-toggle="tab">私に連絡して</a></li>
+                <li class=" wf-notosansjapanese"><a href="#tab1" role="tab" data-toggle="tab">私を雇う</a></li>
               </ul>
 
               <div id="myTabContent" class="tab-content flat-tab-content">
                 <div class="tab-pane fade in active" id="tab0">
                   <form method="post" id="contactForm" name="contactForm">
+                  <input type="hidden" id="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="subject" value="Message Contact Form">
-                    <div class="form-group">
-                      <label>Your Name (*)</label>
-                      <input type="text" class="form-control form-flat" name="fullname" required>
+                    <div class="form-group wf-notosansjapanese">
+                      <label>あなたの名前 (*)</label>
+                      <input id="ful1" type="text" class="form-control form-flat" name="fullname" required>
                     </div>
-                    <div class="form-group">
-                      <label>Email (*)</label>
-                      <input type="email" class="form-control form-flat" name="email" required>
+                    <div class="form-group wf-notosansjapanese">
+                      <label>Eメール (*)</label>
+                      <input id="eml1" type="email" class="form-control form-flat" name="email" required>
                     </div>
-                    <div class="form-group">
-                      <label>Your Message (*)</label>
-                      <textarea class="form-control form-flat" name="message" rows="8" required></textarea>
+                    <div class="form-group wf-notosansjapanese">
+                      <label>あなたのメッセージ (*)</label>
+                      <textarea id="mes1" class="form-control form-flat" name="message" rows="8" required></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group wf-notosansjapanese">
                       <div id="captcha1"></div>
+                      @if($errors->has('g-recaptcha-response'))
+                        <span class="invalid-feedback" style="display:block;"><strong>{{$errors->first('g-recaptcha-response')}}</strong></span>
+                      @endif
                     </div>
-                    <div class="form-group ">
-                      <button type="submit" class="btn btn-flat-solid primary-btn" >Send Message</button>
+                    <div class="form-group wf-notosansjapanese">
+                      <button type="submit" class="btn btn-flat-solid primary-btn" >メッセージを送る</button>
                     </div>
-                    <div class="form-group">
-                      <div class="preload-submit hidden"><hr/> <i class="fa fa-spinner fa-spin"></i> Please Wait ...</div>
-                      <div class="message-submit error hidden"></div>
+                    <div class="form-group wf-notosansjapanese">
+                      <div class="preload-submit hidden"><hr/> <i class="fa fa-spinner fa-spin"></i> お待ちください ...</div>
+                      <div class="message-submit error hidden wf-notosansjapanese"></div>
                     </div>
                   </form>
                 </div>
                 <div class="tab-pane fade" id="tab1">
-                  <form method="post" id="hireForm" name="hireForm">
+                  <!-- <form method="post" id="id="hireForm"" name="hireForm"> -->
+                  {!! Form::open(['url'=>'upload','files'=>true,'id'=>'hireForm','enctype'=>"multipart/form-data"]); !!}
                     <input type="hidden" name="subject" value="Message Hire Form">
                     <input type="hidden" name="file" id="file-att" value="">
                     <div class="form-group">
-                      <label>Your Name (*)</label>
-                      <input type="text" class="form-control form-flat" name="fullname" required>
+                      <label>あなたの名前 (*)</label>
+                      <input id="ful1" type="text" class="form-control form-flat" name="fullname" required>
+                    </div>
+                    <div class="form-group wf-notosansjapanese">
+                      <label>Eメール (*)</label>
+                      <input id="eml1" type="email" class="form-control form-flat" name="email" required>
                     </div>
                     <div class="form-group">
-                      <label>Email (*)</label>
-                      <input type="email" class="form-control form-flat" name="email" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Short Description About of Project (*)</label>
-                      <textarea class="form-control form-flat" name="message" rows="8" required></textarea>
+                      <label>プロジェクト概要 (*)</label>
+                      <textarea id="mes1" class="form-control form-flat" name="message" rows="8" required></textarea>
                     </div>
 
-                    <div class="form-group">
-                      <label>Attach Your Document <span class="display-block color-dark">(only .pdf  allowed , max size 200Kb)</span></label>
-                      <div class="clearfix">						
-                        <input type="button" id="upload-btn" class="btn btn-flat-solid btn-file btn-xs btn-default  clearfix" value="Choose file">
-                        <div id="errormsg" class="clearfix error"></div>	              
-                        <div id="pic-progress-wrap" class="progress-wrap"></div>	
-                        <div id="picbox" class="attbox color-dark"></div>
-                      </div>
+                    <div class="form-group wf-notosansjapanese">                    
+                      <label>あなたの文書を添付する <span class="display-block color-dark">(許可されているのはPDFのみ , 最大サイズ200Kb)</span></label>
+                      {!!Form::file('fileatt',['id' => 'filat', 'accept'=>'.pdf','value'=>'204800' ]); !!}
+                      @if(count($errors)>0)
+                      <label style="color:red;" for="">{{$errors->first('fileatt')}}</label>
+                      @endif
                     </div>
                     <div class="form-group">
                       <div id="captcha2"></div>
+                      @if($errors->has('g-recaptcha-response'))
+                        <span class="invalid-feedback wf-notosansjapanese" style="display:block;"><strong>{{$errors->first('g-recaptcha-response')}}</strong></span>
+                      @endif
                     </div>
-
                     <div class="form-group">
-                      <button type="submit" class="btn btn-flat-solid primary-btn">Send Request</button>
+                      <button type="submit" class="btn btn-flat-solid primary-btn wf-notosansjapanese">リクエストを送信</button>
                     </div>
-
                     <div class="form-group">
-                      <div class="preload-submit hidden"><hr/> <i class="fa fa-spinner fa-spin"></i> Please Wait ...</div>
-                      <div class="message-submit error hidden"></div>
+                      <div class="preload-submit hidden wf-notosansjapanese"><hr/> <i class="fa fa-spinner fa-spin"></i> お待ちください ...</div>
+                      <div class="message-submit error hidden wf-notosansjapanese"></div>
                     </div>
                   </form>
                 </div>
@@ -777,10 +809,10 @@
           <div class="map-area" id="map-contact"></div>
           <div class="hidden map-contact-body">
             <div class="map-content">
-              <h4 class="no-margin-top font-alt">Iam Here</h4>
-              <p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 8723 Bogor, West Java</p>
-              <p><i class="fa fa-mobile"></i> <strong>Phone:</strong> 87-3898-221 </p>
-              <p><i class="fa fa-envelope"></i> <strong>Email:</strong> someone@company.com</p>
+              <h4 class="no-margin-top font-alt wf-notosansjapanese">私はここにいます</h4>
+              <p class="wf-notosansjapanese"><i class="fa fa-map-marker"></i> <strong>現住所:</strong> 〒165-0027 東京都、中野区、野方2丁目38-11</p>
+              <p class="wf-notosansjapanese"><i class="fa fa-mobile"></i> <strong>電話:</strong> + 070-6511-9523 </p>
+              <p class="wf-notosansjapanese"><i class="fa fa-envelope"></i> <strong>メール:</strong> kentldolar@gmail.com</p>
             </div>
           </div>
           <!--END MAP-->
@@ -791,28 +823,28 @@
       <!--FOOTER-->
       <footer class="main-footer">
         <div class="container">
-          <div class="folow-me">
-            Follow Me On
+          <div class="folow-me wf-notosansjapanese">
+            私に従ってください
           </div>
           <ul class="list-inline social-links text-center">
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.facebook.com/kent.dolar25"  data-toggle="tooltip"  data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Google"><i class="fa fa-google"></i></a>
+              <a href="https://codepen.io/kentcodes/"  data-toggle="tooltip"  data-placement="top" title="Codepen"><i class="fa fa-codepen"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://twitter.com/kelocreate"  data-toggle="tooltip"  data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/dolarkent/"  data-toggle="tooltip"  data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Github"><i class="fa fa-github"></i></a>
+              <a href="https://github.com/CpEKent"  data-toggle="tooltip"  data-placement="top" title="Github"><i class="fa fa-github"></i></a>
             </li>
           </ul>
           <p class="text-center no-margin">
-            Solid - All Rights Reserved &COPY; 2014
+            kentscsv.kentldolar - All Rights Reserved &COPY; 2019
           </p>
           <a href="#home" class="back-to-top"><i class="fa fa-angle-double-up" ></i></a>
         </div>
@@ -826,31 +858,31 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ asset('plugins/jquery.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-3.3.1/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.js') }}"></script>
+    <script src="{{ asset('public/plugins/bootstrap-3.3.1/js/bootstrap.min.js') }}"></script>
 
     <!-- maps js -->
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script> 
-    <script src="{{ asset('plugins/jquery.ui.map.js') }}"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnaRXO_URtinYZvUJ1WNLPgwQX-xfQhcs" type="text/javascript"></script> 
+    <script src="{{ asset('public/plugins/jquery.ui.map.js') }}"></script> 
     <!-- advanced easing options -->
-    <script src="{{ asset('plugins/jquery.easing-1.3.pack.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.easing-1.3.pack.js') }}"></script>
     <!-- parallax bg js -->
-    <script src="{{ asset('plugins/jquery.parallax-1.1.3.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.parallax-1.1.3.js') }}"></script>
     <!-- lightbox js -->
-    <script src="{{ asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <!-- typed animation-->
-    <script src="{{ asset('plugins/typed/typed.js') }}"></script>
+    <script src="{{ asset('public/plugins/typed/typed.js') }}"></script>
     <!-- easy chart-->
-    <script src="{{ asset('plugins/easypiechart/jquery.easypiechart.min.js ') }}"></script>
+    <script src="{{ asset('public/plugins/easypiechart/jquery.easypiechart.min.js ') }}"></script>
     <!-- simple Captcha -->
-    <script src="{{ asset('plugins/simpleCaptcha/jquery.simpleCaptcha.js ') }}"></script>
+    <script src="{{ asset('public/plugins/simpleCaptcha/jquery.simpleCaptcha.js ') }}"></script>
     <!-- simple Ajax Uploader -->
-    <script src="{{ asset('plugins/Simple-Ajax-Uploader/SimpleAjaxUploader.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/Simple-Ajax-Uploader/SimpleAjaxUploader.min.js') }}"></script>
     <!-- validate jquery-->
-    <script src="{{ asset('plugins/validator/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/validator/jquery.validate.min.js') }}"></script>
 
     <!--=====================================================-->
     <!--configuration template-->
-    <script src="{{ asset('black/theme/js/theme.js') }}"></script>
+    <script src="{{ asset('public/black/theme/js/theme.js') }}"></script>
   </body>
 </html>

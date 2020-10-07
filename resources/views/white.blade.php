@@ -3,30 +3,51 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">        
         <title>KENT LOYD DOLAR - RESUME AND PORTFOLIO</title>
 
         <!--favicon-->
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
-        <link rel="icon" href="{{ asset('images/logo.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('public/images/logo.png') }}">
+        <link rel="icon" href="{{ asset('public/images/logok_rda_icon.ico') }}">
 
         <!--pace (page loader) style-->
-        <link href="{{ asset('plugins/pace/pace.css') }}" rel="stylesheet">
-        <script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
+        <link href="{{ asset('public/plugins/pace/pace.css') }}" rel="stylesheet">
+        <script src="{{ asset('public/plugins/pace/pace.min.js') }}"></script>
 
         <!-- Bootstrap -->
-        <link href="{{ asset('plugins/bootstrap-3.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/bootstrap-3.3.1/css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Icons -->
-        <link href="{{ asset('plugins/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
         <!-- typed style -->
-        <link href="{{ asset('plugins/typed/typed.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/typed/typed.css') }}" rel="stylesheet">
         <!-- popup style-->
-        <link href="{{ asset('plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
         <!-- simple Captcha-->
-        <link href="{{ asset('plugins/simpleCaptcha/jquery.simpleCaptcha.css') }}" rel="stylesheet">
-
+        <link href="{{ asset('public/plugins/simpleCaptcha/jquery.simpleCaptcha.css') }}" rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+        </script>
+        <script type="text/javascript">
+          var verifyCallback = function(response) {
+            alert(response);
+          };
+          var widgetId1;
+          var widgetId2;
+          var onloadCallback = function() {
+            // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+            // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+            widgetId1 = grecaptcha.render(document.getElementById('captcha1'), {
+              'sitekey' : "{{env('CAPTCHA_KEY')}}",
+              'theme' : 'light'
+            });
+            widgetId2 = grecaptcha.render(document.getElementById('captcha2'), {
+              'sitekey' : "{{env('CAPTCHA_KEY')}}",
+              'theme' : 'light'
+            });
+          };
+        </script>
         <!-- Themes styles-->
-        <link href="{{ asset('white/theme/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/white/theme/css/style.css') }}" rel="stylesheet">
     </head>
     <body  data-spy="scroll" data-target=".menu-area" data-offset="200">
     <!--wrapper page-->
@@ -75,19 +96,19 @@
                 <div class="col-md-3">
                   <ul class="breadcrumb main-nav no-space">
                     <li>
-                      <a href="#" ><i class="fa fa-facebook"></i></a>
+                      <a href="https://www.facebook.com/kent.dolar25" ><i class="fa fa-facebook"></i></a>
                     </li>
                     <li>
-                      <a href="#"  ><i class="fa fa-google"></i></a>
+                      <a href="https://codepen.io/kentcodes/"  ><i class="fa fa-codepen"></i></a>
                     </li>
                     <li>
-                      <a href="#"  ><i class="fa fa-twitter"></i></a>
+                      <a href="https://twitter.com/kelocreate"  ><i class="fa fa-twitter"></i></a>
                     </li>
                     <li>
-                      <a href="#" ><i class="fa fa-linkedin"></i></a>
+                      <a href="https://www.linkedin.com/in/dolarkent/" ><i class="fa fa-linkedin"></i></a>
                     </li>
                     <li>
-                      <a href="#" ><i class="fa fa-github"></i></a>
+                      <a href="https://github.com/kentldolar" ><i class="fa fa-github"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -112,20 +133,20 @@
             <div class="bg-secondary clearfix">
               <div class="inner-text">
                 <h3 class=" color-dark no-margin-top">Hello There!</h3>
-                <p>I created this website in order to connect to every people who are willing to let me help/serve them. just like a hub for people looking for hope.</p>
-                <p >I discovered my passion for computer when I was still young; It was then when it became clear what I wanted to do for a living. I pursued my career at the amazing Notre Dame of Dadiangas University where I started my major in Computer Engineering. In my final year I took a begginer’s Online Web class, where I discovered the love for web developing. and started the never-ending journey of becoming a web developer along with sharpening my eye for system service.</p>
-                <p class="no-margin">In 2016 I become a true web developer and at this moment I can able to help/serve every people who needs to spread their talents and services around the globe.</p>
+                <p>I created this website in order to connect to every people who are willing to let me serve them and to inspire other people. just like a hub for people looking for help and inspiration. I will do my best to be proactive if ever you want to connect with me.</p>
+                <p >I discovered my passion for computer when I was still young, It was then when it became clear what I wanted to do for a living. I pursued my career at the amazing Notre Dame of Dadiangas University where I started my major in Computer Engineering. In my Senior year I took a beginner’s Online Web class, where I discovered the love for web development and started the never-ending journey of becoming a web developer along with sharpening my eye for system service.</p>
+                <p class="no-margin">In 2016 I become a true web developer and at this moment I am able to serve every people who needs to spread their talents and services around the globe.</p>
               </div>
             </div>
             <div class="bg-dark clearfix">
               <div class="inner-text">
                 <p class="no-margin color-light ">
-                  <strong class="fix-width-100"><i class="fa fa-calendar margin-right-5"></i> Birthdate</strong> : 09/25/1991<br/>
+                  <!-- <strong class="fix-width-100"><i class="fa fa-calendar margin-right-5"></i> Birthdate</strong> : 09/25/1991<br/> -->
                   <?php /*<strong class="fix-width-100"><i class="fa fa-skype margin-right-5"></i> Skype</strong> : usename.fake<br/> */ ?>
                   <strong class="fix-width-100"><i class="fa fa-phone margin-right-5"></i> Phone</strong> : + 070-6511-9523<br/>
                   <strong class="fix-width-100"><i class="fa fa-envelope margin-right-5"></i> Email</strong> : kentldolar@gmail.com<br/>
-                  <strong class="fix-width-100"><i class="fa fa-globe margin-right-5"></i> Website</strong> : www.kentscsv.com<br/>
-                  <strong class="fix-width-100"><i class="fa fa-location-arrow margin-right-5"></i> Address</strong> : 165-0027 Tokyo-to, Nakano-ku, Nogata 2-38-11-203<br/>
+                  <strong class="fix-width-100"><i class="fa fa-globe margin-right-5"></i> Website</strong> : kentldolar.cloud<br/>
+                  <!-- <strong class="fix-width-100"><i class="fa fa-location-arrow margin-right-5"></i> Address</strong> : 165-0027 Tokyo-to, Nakano-ku, Nogata 2-38-11-203<br/> -->
                 </p>
               </div>
             </div>
@@ -138,19 +159,19 @@
             <li class="col-sm-4 no-padding">
               <div class="box">
                 <div class="ic"><i class="fa fa-code"></i></div>
-                <h5 class="text-uppercase color-dark">Web Developer</h5>
+                <h5 class="text-uppercase color-dark">AWS-DevOps</h5>
               </div>
             </li>
             <li class="col-sm-4 no-padding">
               <div class="box">
                 <div class="ic"><i class="fa fa-laptop"></i></div>
-                <h5 class="text-uppercase color-dark">Web Designer</h5>
+                <h5 class="text-uppercase color-dark">Web-Developer</h5>
               </div>
             </li>
             <li class="col-sm-4 no-padding">
               <div class="box ">
                 <div class="ic"><i class="fa fa-bar-chart"></i></div>
-                <h5 class="text-uppercase color-dark">Web Full-Stack</h5>
+                <h5 class="text-uppercase color-dark">PHP-Engineer</h5>
               </div>
             </li>
           </ul>
@@ -173,41 +194,67 @@
         <div class="container-medium ">
           <div class="list-employment">
             <ul class="list-unstyled  clearfix">
-              <li>
+            <li>
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">01</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Front-End Engineer</h5>
-                  <p class="font-alt color-dark">Diamond Head Tokyo</p>
-                  <p>As a Front-End Web Developer, I have been assigned to create, develop and maintain website for our different online shops customers, 
-using the companies different system and frameworks. I utilize PHP, HTML5/CSS3 and JavaScript/jQuery to the companies system and
-make the task more efficient and better with the help of Git Bitbucket, Sourcetree and Teraterm.
-</p>
-                  <p class="font-alt color-dark">  Dec 2017 - Present</p>
+                  <h5 class="text-uppercase color-dark text-bold">Freelance Web-Developer</h5>
+                  <p class="font-alt color-dark"><a href="/">kentldolar.cloud</a></p>
+                  <p>Contract project handling <strong><em>AWS Server and CI/CD Automation Development</em></strong>, <em>Wordpress Development</em>, <em>PHP Development</em></p>
+                  <p class="font-alt color-dark">Aug 2020 - Present</p>
                 </div>
               </li>
-              <li>
+            <li>
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">02</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">Full-Stack Engineer</h5>
-                  <p class="font-alt color-dark">Ring System Solution</p>
-                  <p>As a Web and System Developer, I am integrated in multi-disciplinary language programs such as HTML5, CSS3, Javascripts, jQuery
-and PHP. While also using different frameworks and databases for our customer's services such as Moodle, Laravel, Wordpress, Microsoft
-Azure, SQL Server, MySQL, etc. with the help of Information Management System such as Redmin</p>
-                  <p class="font-alt color-dark"> Dec 2016 - Dec 2017</p>
+                  <h5 class="text-uppercase color-dark text-bold">Cloud Engineer</h5>
+                  <p class="font-alt color-dark"><a href="https://www.biosjp.com/corporate.php">BiOS Inc.</a>, Nishi-shinjuku, Shinjuku City, Tokyo 160-0023</p>
+                  <p>Contract project handling <em>AWS Server middleware and user setups and implementations</em>, <em>Creating documents for procedure/system developments</em>, has good experience in <em>AWS and Google Cloud speech to
+text and Natural Language API</em>,<em> Monitoring, Escalating server errors and malfunctions</em>,<strong><em>Created Serverless application (Audio Speech to Text Project and Natural language)</em></strong>,
+Troubleshooting, Security testing, installing middlewares and Creating Linux User for our clients server using
+AWS. <em>Created CI/CD for development and production environment using Github, AWS Codebuild, AWS
+CodePipeline and AWS CodeDeploy which I use in our serverless application External Monitoring using
+python3.8 and Speechtotext and Natural Language using python3.8 wordpress using yml file.</em>
+</p>
+                  <p class="font-alt color-dark">  June 2019 - Aug 2020</p>
                 </div>
               </li>
               <li>
                 <div class="ic"><i class="fa fa-briefcase"></i></div>
                 <div class="number font-alt">03</div>
                 <div class="desc">
+                  <h5 class="text-uppercase color-dark text-bold">Front-End Engineer</h5>
+                  <p class="font-alt color-dark"><a href="http://diamondhead.jp/company/">Diamond Head Tokyo</a>, Tokyo Head Office 6&7th Floor, TDS Mita bldg. 2-7-13 Mita, Minato-ku, Tokyo, 〒108-0073 Japan</p>
+                  <p>As a Front-End Web Developer, I have been assigned to create, develop and maintain website for our different online shops, 
+using the companies e-commerce system. I utilize Adobe Frameworks, PHP, HTML5/CSS3 and JavaScript/jQuery to our companies system and
+make the task more efficient and better with the help of Git Bitbucket, Sourcetree and Teraterm.
+</p>
+                  <p class="font-alt color-dark">  Dec 2017 - June 2019 </p>
+                </div>
+              </li>
+              <li>
+                <div class="ic"><i class="fa fa-briefcase"></i></div>
+                <div class="number font-alt">04</div>
+                <div class="desc">
+                  <h5 class="text-uppercase color-dark text-bold">Back-End Engineer</h5>
+                  <p class="font-alt color-dark"><a href="http://ring-group.jp/">Ring System Solution</a>, 〒110-0016 Tokyo-to, Taito-ku, 2-1-1 East Akihabara Bldg. 6F, Japan</p>
+                  <p>As a Web and System Developer, I am integrated in multi-disciplinary language programs such as HTML5, CSS3, Javascripts, jQuery
+and PHP. While also using different frameworks and databases for our customer's services such as Moodle, Laravel, Wordpress, Microsoft
+Azure, SQL Server, MySQL, etc. with the help of Information Management System such as Redmine</p>
+                  <p class="font-alt color-dark"> Dec 2016 - Dec 2017</p>
+                </div>
+              </li>
+              <li>
+                <div class="ic"><i class="fa fa-briefcase"></i></div>
+                <div class="number font-alt">05</div>
+                <div class="desc">
                   <h5 class="text-uppercase color-dark text-bold">System Monitoring/Operator</h5>
-                  <p class="font-alt color-dark">CitiBank Japan Ltd. (CJL) </p>
+                  <p class="font-alt color-dark"><a href="https://www.citigroup.jp/en/about/access-ses.html">CitiBank Japan Ltd. (CJL)</a>, Shinjuku Eastside Square, 6-27-30 Shinjuku, Shinjuku-ku, Tokyo 〒160-8812 </p>
                   <p>In a Corporate bank environments with formal processes and strict security and procedures handling multiple systems for
 monitoring its network connection, server up, system testing, tracking, escalating, incident reporting, documenting, 
 reporting, other that I am doing case studies, knowledge sharing, system management, evidence management, 
-system documentation and computer tech supporting.
+system documentation and computer tech support, with the help of <a href="https://www.skillhouse.co.jp/">Skillhouse Staffing Solutions</a>.
 </p>
                   <p class="font-alt color-dark">  Dec 2014 - Dec 2016</p>
                 </div>
@@ -232,19 +279,39 @@ system documentation and computer tech supporting.
                 <div class="ic"><i class="fa fa-graduation-cap"></i></div>
                 <div class="number font-alt">01</div>
                 <div class="desc">
-                  <h5 class="text-uppercase color-dark text-bold">TOPA 21st Century Language School</h5>
-                  <p class="font-alt color-dark">1-21-3 Koenji-Kita, Suginami, Tokyo 166-0002</p>
-                  <p>I studied Japanese N3 to work in Japan.</p>
-                  <p class="font-alt color-dark">  Oct 2013 - March 2014</p>
+                  <h5 class="text-uppercase color-dark text-bold"><strong>Udemy:</strong><a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/learn/lecture/12287460#overview" target="_blank">The Complete 2020 Web Development Bootcamp by Angela Yu</a> </h5>
+                  <!-- <p class="font-alt color-dark"></p> -->
+                  <p>I bought a Web developer course in Udemy to improve my Web development skills and be confident more.</p>
+                  <p class="font-alt color-dark"> Aug 2020 - Present</p>
                 </div>
               </li>
               <li>
                 <div class="ic"><i class="fa fa-graduation-cap"></i></div>
                 <div class="number font-alt">02</div>
                 <div class="desc">
+                  <h5 class="text-uppercase color-dark text-bold"><strong>Udemy:</strong><a href="https://www.udemy.com/course/aws-certified-cloud-practitioner/learn/lecture/19202366#overview" target="_blank">AWS Certified Cloud Practitioner 2020 by Zeal Vora</a></h5>
+                  <!-- <p class="font-alt color-dark">1-21-3 Koenji-Kita, Suginami, Tokyo 〒166-0002, Japan</p> -->
+                  <p>I bought an AWS Course to fully grasp the essential usage of AWS and implement it in my work.</p>
+                  <p class="font-alt color-dark">June 2019 - Aug 2020</p>
+                </div>
+              </li>
+              <li>
+                <div class="ic"><i class="fa fa-graduation-cap"></i></div>
+                <div class="number font-alt">03</div>
+                <div class="desc">
+                  <h5 class="text-uppercase color-dark text-bold">TOPA 21st Century Language School</h5>
+                  <p class="font-alt color-dark">1-21-3 Koenji-Kita, Suginami, Tokyo 〒166-0002, Japan</p>
+                  <p>I studied Japanese N3 to work in Japan while having part-time. I encounter meeting different people with diffrent culture and made friends till now.</p>
+                  <p class="font-alt color-dark">  Oct 2013 - March 2014</p>
+                </div>
+              </li>
+              <li>
+                <div class="ic"><i class="fa fa-graduation-cap"></i></div>
+                <div class="number font-alt">04</div>
+                <div class="desc">
                   <h5 class="text-uppercase color-dark text-bold">Notre Dame of Dadiangas University</h5>
-                  <p class="font-alt color-dark">General Santos City</p>
-                  <p>I studied Computer Engineering Course for 5 years with Professional Discipline.</p>
+                  <p class="font-alt color-dark">Marist Ave, General Santos City, 9500 South Cotabato, Philippines</p>
+                  <p>I studied Computer Engineering Course within 5 years. My Final Thesis is all about Automated Fan Control depending on temperature and motion around. I learned professionalism,friendships and competence with great/ likable and intelligent people that I have known.</p>
                   <p class="font-alt color-dark"> Bachelor of Science in Computer Engineering SY 2007-2012</p>
                 </div>
               </li>
@@ -277,7 +344,7 @@ system documentation and computer tech supporting.
           <ul class="skill top list-unstyled clearfix">
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="96">
+                <span class="chart" data-percent="90" >
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">PHP</div>
@@ -285,15 +352,15 @@ system documentation and computer tech supporting.
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="87">
+                <span class="chart" data-percent="90">
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase  color-dark">C/C++</div>
+                <div class="text-uppercase  color-dark">AWS</div>
               </div>
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right br-bottom">
-                <span class="chart" data-percent="89">
+                <span class="chart" data-percent="80">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">MYSQL</div>
@@ -301,10 +368,10 @@ system documentation and computer tech supporting.
             </li>            
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-bottom">
-                <span class="chart" data-percent="70">
+                <span class="chart" data-percent="90">
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase color-dark">JQUERY/JAVASCRIPT</div>
+                <div class="text-uppercase color-dark">JAVASCRIPT</div>
               </div>
             </li>
           </ul><!--END SKIL CHART TOP-->
@@ -313,15 +380,15 @@ system documentation and computer tech supporting.
           <ul class="skill bottom list-unstyled clearfix">
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right">
-                <span class="chart" data-percent="60">
+                <span class="chart" data-percent="70" >
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase  color-dark">Photoshop</div>
+                <div class="text-uppercase  color-dark">TERRAFORM/DOCKER/VAGRANT</div>
               </div>
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right">
-                <span class="chart" data-percent="99">
+                <span class="chart" data-percent="100">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">HTML</div>
@@ -329,7 +396,7 @@ system documentation and computer tech supporting.
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box br-right">
-                <span class="chart" data-percent="60">
+                <span class="chart" data-percent="100">
                   <span class="percent"></span>
                 </span>
                 <div class="text-uppercase  color-dark">CSS</div>
@@ -337,10 +404,10 @@ system documentation and computer tech supporting.
             </li>
             <li class="col-sm-3 col-xs-6 no-padding">
               <div class="box">
-                <span class="chart" data-percent="77">
+                <span class="chart" data-percent="50">
                   <span class="percent"></span>
                 </span>
-                <div class="text-uppercase color-dark">BOOTSTRAP</div>
+                <div class="text-uppercase color-dark">NODEJS/REACTJS/VUEJS</div>
               </div>
             </li>
           </ul><!--END SKIL CHART BOTTOM-->
@@ -355,21 +422,21 @@ system documentation and computer tech supporting.
             <div class="col-sm-6">
               <ul class="list-unstyled list-progress">
                 <li>
-                  <div class="text-uppercase color-dark title "><span>Creative</span>  <small>60%</small></div>
+                  <div class="text-uppercase color-dark title"><span>Creative</span>  <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="80%"></div>
+                    <div class="line bar_progress" data-holdwidth="60%"  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" ></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Leadership   <small>60%</small></div>
+                  <div class="text-uppercase color-dark title">Leadership   <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="60%"></div>
+                    <div class="line bar_progress" data-holdwidth="60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Communication   <small>60%</small></div>
+                  <div class="text-uppercase color-dark title">Communication   <small aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="70%" ></div>
+                    <div class="line bar_progress" data-holdwidth="60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
               </ul>
@@ -377,21 +444,21 @@ system documentation and computer tech supporting.
             <div class="col-sm-6">
               <ul class="list-unstyled list-progress">
                 <li>
-                  <div class="text-uppercase color-dark title">English <small>80%</small></div>
+                  <div class="text-uppercase color-dark title">English <small aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="80%" ></div>
+                    <div class="line bar_progress" data-holdwidth="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Japanese  <small>50%</small></div>
+                  <div class="text-uppercase color-dark title">Japanese  <small aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="60%" ></div>
+                    <div class="line bar_progress" data-holdwidth="50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
                 <li>
-                  <div class="text-uppercase color-dark title">Filipino  <small>80%</small></div>
+                  <div class="text-uppercase color-dark title">Filipino  <small aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</small></div>
                   <div class="progress-line">
-                    <div class="line" data-holdwidth="70%" ></div>
+                    <div class="line bar_progress" data-holdwidth="70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </li>
               </ul>
@@ -404,10 +471,9 @@ system documentation and computer tech supporting.
         <div class="parallax-bg bg1" >
           <div class="container">
             <div class="padding30 text-center">
-            <?php /*TODO:: */ ?>
-              <a href="#" class="btn btn-flat-line btn-default light-font "><i class="fa fa-download"></i>  Download CV</a>
+              <a href="{{ asset('public/download/Resume15.pdf') }}" class="btn btn-flat-line btn-default light-font " target="_blank" ><i class="fa fa-download"></i>  Download CV</a>
               <span class="space-inline-15 hidden-xs"></span>
-              <a href="#" class="btn btn-flat-line btn-default light-font"><i class="fa fa-print"></i> Print CV</a>
+              <a href="javascript: w=window.open('{{ asset('public/download/Resume15.pdf') }}'); w.print(); " class="btn btn-flat-line btn-default light-font"><i class="fa fa-print"></i> Print CV</a>
             </div>
           </div>
         </div><!-- END DOWNLOAD & PRVIEW BTN -->
@@ -435,13 +501,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p1.png" alt="">
+                    <img src="{{ asset('public/images/400x300jjhs.png') }}" alt="kentldolar jjhs project">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p1.png" title="pic 02" class="galery-item" ><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300jjhs.png') }}" title="pic 02" class="galery-item" ><i class="fa fa-search-plus"></i></a>
+                        <a href="https://joloujapanhomespa.com/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Jolou Japan Home Spa</a>
+                      <a href="https://joloujapanhomespa.com/" class="project-title" target="_blank">Jolou Japan Home Spa (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -449,13 +515,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p2.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300kentscsv.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p2.jpg" title="pic 02" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300kentscsv.png') }}" title="pic 02" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://resume.kentscsv.com/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Kent's CSV</a>
+                      <a href="http://resume.kentscsv.com/" class="project-title" target="_blank">Kent's CSV (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -463,13 +529,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p3.png" alt="">
+                    <img src="{{ asset('public/images/400x300tph.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p3.png" title="pic 03" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300tph.png') }}" title="pic 03" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://resume.kentscsv.com/tph/index" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Times Plaza Hotel</a>
+                      <a href="http://resume.kentscsv.com/tph/index" class="project-title" target="_blank">Times Plaza Hotel (Full-Web)</a>
                     </div>
                   </div>
                 </div>
@@ -477,13 +543,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p4.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300sanyo.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p4.jpg" title="pic 04" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300sanyo.png') }}" title="pic 04" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://sanyo-i.jp/s/customer/NewYearSale_tokushu" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="https://sanyo-i.jp/s/customer/NewYearSale_tokushu" class="project-title">Sanyo i-store Renewal 2018</a>
+                      <a href="https://sanyo-i.jp/s/customer/NewYearSale_tokushu" class="project-title" target="_blank">Sanyo i-store (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -491,13 +557,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p6.png" alt="">
+                    <img src="{{ asset('public/images/400x300benexy.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p6.png" title="pic 05" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300benexy.png') }}" title="pic 05" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://ec.benexy.com/sp/renewal-campaign/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="https://ec.benexy.com/sp/renewal-campaign/" class="project-title">Benexy Online Renewal 2018</a>
+                      <a href="https://ec.benexy.com/sp/renewal-campaign/" class="project-title" target="_blank">Benexy Online (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -505,13 +571,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p5.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300grurond.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p5.jpg" title="pic 06" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300grurond.png') }}" title="pic 06" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="http://test.grurond.com/lp/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="http://test.grurond.com/lp/" class="project-title">Grurond Online Store</a>
+                      <a href="http://test.grurond.com/lp/" class="project-title" target="_blank">Grurond Online Store  (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -519,13 +585,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p1.png" alt="">
+                    <img src="{{ asset('public/images/400x300melrose.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p1.png"  title="pic 07" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300melrose.png') }}"  title="pic 07" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://store.melrose.co.jp/sp/martiniquepre_2018_summer_issue/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="https://store.melrose.co.jp/sp/martiniquepre_2018_summer_issue/" class="project-title">Melrose online store summer issue 2018</a>
+                      <a href="https://store.melrose.co.jp/sp/martiniquepre_2018_summer_issue/" class="project-title" target="_blank">Melrose Online (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -533,13 +599,13 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p2.jpg" alt="">
+                    <img src="{{ asset('public/images/400x300virtusize.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p2.jpg"  title="pic 08" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300virtusize.png') }}"  title="pic 08" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://sanyo-i.jp/s/customer/virtusize" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://sanyo-i.jp/s/customer/virtusize" class="project-title" target="_blank">Sanyo-i (Landing Page)</a>
                     </div>
                   </div>
                 </div>
@@ -547,23 +613,23 @@ system documentation and computer tech supporting.
               <div class="col-md-4 col-sm-6">
                 <div class="box-work">
                   <div class="work-preview">
-                    <img src="assets/theme/images/portfolio/p3.png" alt="">
+                    <img src="{{ asset('public/images/400x300tegteg.png') }}" alt="">
                     <div class="hover">
                       <div class="link-btns">
-                        <a href="assets/theme/images/portfolio/p3.png" title="pic 09" class="galery-item"><i class="fa fa-search-plus"></i></a>
-                        <a href="portfolio-detail.html"><i class="fa fa-link"></i></a>
+                        <a href="{{ asset('public/images/400x300tegteg.png') }}" title="pic 09" class="galery-item"><i class="fa fa-search-plus"></i></a>
+                        <a href="https://onlinestore.tegteg.tokyo/" target="_blank"><i class="fa fa-link"></i></a>
                       </div>
-                      <a href="portfolio-detail.html" class="project-title">Project Title</a>
+                      <a href="https://onlinestore.tegteg.tokyo/" class="project-title" target="_blank">Tegteg Renewal 2018</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!--BTN SHOW MORE-->
-            <div class="box-btn-more"><a href="portfolio-list.html" class="btn btn-flat-line btn-link" id="more-work"> Show More</a></div>
+            <!-- <div class="box-btn-more"><a href="portfolio-list.html" class="btn btn-flat-line btn-link" id="more-work"> Show More</a></div> -->
           </div>
         </div><!--END List WOrk-->
-
+        <?php /*
         <!--TESTIMONIAL-->
         <div class="parallax-bg black-light bg2">
           <div class="container-medium">
@@ -609,7 +675,7 @@ system documentation and computer tech supporting.
               </div>
             </div>
           </div>
-        </div><!--END TESTIMONIAL-->
+        </div><!--END TESTIMONIAL--> */ ?>
       </section><!--END PORTFOLIO-->
 
       <!--BLOG-->
@@ -630,64 +696,65 @@ system documentation and computer tech supporting.
             <ul class="list-unstyled list-blog">
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/1.jpg">&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943web.png') }}">&nbsp;
                     <div  class="blog-ic"><i class="fa fa-pencil"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">My Website Making</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 19th July 2012 </span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>Since then when in elementary I'm used to make a webpage using HTML and until in college using HTML is my easiest way to make my project in Online Technology Course.</p>
+                    <a href="https://kentoy-d-mytricks.blogspot.com/2012/07/mytricks-projects.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/2.jpg" >&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943hobbies.png') }}" >&nbsp;
                     <div  class="blog-ic"><i class="fa fa-picture-o"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">Hobbies & Talents as a musician</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 15th May 2012</span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>GooD @ GuiTaR: It became my Hobby since I waS a TeenageR, My cousin a great artist introduce me to this kind of hobby, and now when iM playing I feel great. </p>
+                    <a href="https://kentoy-d-mytricks.blogspot.com/2012/05/mytrickshobbies.html" target="_blank" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="clearfix box-blog">
-                  <div class="blog-bg" data-holdbg="assets/theme/images/blog/4.jpg">&nbsp;
+                  <div class="blog-bg" data-holdbg="{{ asset('public/images/1280x943aboutme.png') }}">&nbsp;
                     <div  class="blog-ic"><i class="fa fa-camera-retro"></i></div>
                   </div>
                   <div class="blog-content">
-                    <h5 class="text-uppercase color-dark text-bold">Title BLog Goes Here.</h5>
+                    <h5 class="text-uppercase color-dark text-bold">About me</h5>
                     <div class="post-meta font-alt">
-                      <span><i class="fa fa-calendar"></i> 19th May 2014</span>
-                      <span><i class="fa fa-user"></i> Jack</span>
+                      <span><i class="fa fa-calendar"></i> 2nd May 2012</span>
+                      <span><i class="fa fa-user"></i> Kent</span>
                       <span><i class="fa fa-folder-o"></i> News</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
+                    <p>Personality : Flexible in different areas,I want to learn everything (even it is not agreed to my skills and environment), easily get bored when I'm not doing anything, adjusting easily to the the team and I love to be at the group,I am friendly and peacemaker.</p>
+                    <a href="http://kentoy-d-mytricks.blogspot.com/2012/05/about-career-as-computer-engineer-like.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
                   </div>
                 </div>
               </li>
             </ul> <!--END LIST BLOG-->
 
             <!--BTN SHOW MORE-->
-            <div class="box-btn-more"><a href="blog-list.html" class="btn btn-flat-line btn-link" id="more-blog"> Show More</a></div>
+            <div class="box-btn-more"><a href="http://kentoy-d-mytricks.blogspot.com/" class="btn btn-flat-line btn-link" id="more-blog"> Show More</a></div>
           </div>
         </div>
       </section> <!--END BLOG-->
 
       <!--CONTACT-->
+      <?php /*TODO:: */ ?>
       <section id="contact" class="block-section">
         <!--CONTACT TITLE-->
         <div class=" shape-bottom">
@@ -711,22 +778,26 @@ system documentation and computer tech supporting.
               <div id="myTabContent" class="tab-content flat-tab-content">
                 <div class="tab-pane fade in active" id="tab0">
                   <form method="post" id="contactForm" name="contactForm">
+                  <input type="hidden" id="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="subject" value="Message Contact Form">
                     <div class="form-group">
                       <label>Your Name (*)</label>
-                      <input type="text" class="form-control form-flat" name="fullname" required>
+                      <input id="ful1" type="text" class="form-control form-flat" name="fullname" required>
                     </div>
                     <div class="form-group">
                       <label>Email (*)</label>
-                      <input type="email" class="form-control form-flat" name="email" required>
+                      <input id="eml1" type="email" class="form-control form-flat" name="email" required>
                     </div>
                     <div class="form-group">
                       <label>Your Message (*)</label>
-                      <textarea class="form-control form-flat" name="message" rows="8" required></textarea>
+                      <textarea id="mes1" class="form-control form-flat" name="message" rows="8" required></textarea>
                     </div>
 
                     <div class="form-group">
                       <div id="captcha1"></div>
+                      @if($errors->has('g-recaptcha-response'))
+                        <span class="invalid-feedback" style="display:block;"><strong>{{$errors->first('g-recaptcha-response')}}</strong></span>
+                      @endif
                     </div>
                     <div class="form-group ">
                       <button type="submit" class="btn btn-flat-solid primary-btn" >Send Message</button>
@@ -738,39 +809,39 @@ system documentation and computer tech supporting.
                   </form>
                 </div>
                 <div class="tab-pane fade" id="tab1">
-                  <form method="post" id="hireForm" name="hireForm">
+                  <!-- <form method="post" id="id="hireForm"" name="hireForm"> -->
+                  {!! Form::open(['url'=>'upload','files'=>true,'id'=>'hireForm','enctype'=>"multipart/form-data"]); !!}
                     <input type="hidden" name="subject" value="Message Hire Form">
                     <input type="hidden" name="file" id="file-att" value="">
                     <div class="form-group">
                       <label>Your Name (*)</label>
-                      <input type="text" class="form-control form-flat" name="fullname" required>
+                      <input id="ful1" type="text" class="form-control form-flat" name="fullname" required>
                     </div>
                     <div class="form-group">
                       <label>Email (*)</label>
-                      <input type="email" class="form-control form-flat" name="email" required>
+                      <input id="eml1" type="email" class="form-control form-flat" name="email" required>
                     </div>
                     <div class="form-group">
                       <label>Short Description About of Project (*)</label>
-                      <textarea class="form-control form-flat" name="message" rows="8" required></textarea>
+                      <textarea id="mes1" class="form-control form-flat" name="message" rows="8" required></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group">                    
                       <label>Attach Your Document <span class="display-block color-dark">(only .pdf  allowed , max size 200Kb)</span></label>
-                      <div class="clearfix">						
-                        <input type="button" id="upload-btn" class="btn btn-flat-solid btn-file btn-xs btn-default  clearfix" value="Choose file">
-                        <div id="errormsg" class="clearfix error"></div>	              
-                        <div id="pic-progress-wrap" class="progress-wrap"></div>	
-                        <div id="picbox" class="attbox color-dark"></div>
-                      </div>
+                      {!!Form::file('fileatt',['id' => 'filat', 'accept'=>'.pdf','value'=>'204800' ]); !!}
+                      @if(count($errors)>0)
+                      <label style="color:red;" for="">{{$errors->first('fileatt')}}</label>
+                      @endif
                     </div>
                     <div class="form-group">
                       <div id="captcha2"></div>
+                      @if($errors->has('g-recaptcha-response'))
+                        <span class="invalid-feedback" style="display:block;"><strong>{{$errors->first('g-recaptcha-response')}}</strong></span>
+                      @endif
                     </div>
-
                     <div class="form-group">
                       <button type="submit" class="btn btn-flat-solid primary-btn">Send Request</button>
                     </div>
-
                     <div class="form-group">
                       <div class="preload-submit hidden"><hr/> <i class="fa fa-spinner fa-spin"></i> Please Wait ...</div>
                       <div class="message-submit error hidden"></div>
@@ -785,10 +856,10 @@ system documentation and computer tech supporting.
           <div class="map-area" id="map-contact"></div>
           <div class="hidden map-contact-body">
             <div class="map-content">
-              <h4 class="no-margin-top font-alt">Iam Here</h4>
-              <p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 8723 Bogor, West Java</p>
-              <p><i class="fa fa-mobile"></i> <strong>Phone:</strong> 87-3898-221 </p>
-              <p><i class="fa fa-envelope"></i> <strong>Email:</strong> someone@company.com</p>
+              <h4 class="no-margin-top font-alt">I am Here</h4>
+              <!-- <p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 165-0027 Tokyo-to, Nakano-ku, Nogata 2-38-11-203</p> -->
+              <p><i class="fa fa-mobile"></i> <strong>Phone:</strong> + 070-6511-9523 </p>
+              <p><i class="fa fa-envelope"></i> <strong>Email:</strong> kentldolar@gmail.com</p>
             </div>
           </div>
           <!--END MAP-->
@@ -804,23 +875,23 @@ system documentation and computer tech supporting.
           </div>
           <ul class="list-inline social-links text-center">
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.facebook.com/kent.dolar25"  data-toggle="tooltip"  data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Google"><i class="fa fa-google"></i></a>
+              <a href="https://codepen.io/kentcodes/"  data-toggle="tooltip"  data-placement="top" title="Codepen"><i class="fa fa-codepen"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://twitter.com/kelocreate"  data-toggle="tooltip"  data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/dolarkent/"  data-toggle="tooltip"  data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
             </li>
             <li>
-              <a href="#"  data-toggle="tooltip"  data-placement="top" title="Github"><i class="fa fa-github"></i></a>
+              <a href="https://github.com/kentldolar"  data-toggle="tooltip"  data-placement="top" title="Github"><i class="fa fa-github"></i></a>
             </li>
           </ul>
           <p class="text-center no-margin">
-            Solid - All Rights Reserved &COPY; 2014
+            kentldolar.cloud - All Rights Reserved &COPY; 2020
           </p>
           <a href="#home" class="back-to-top"><i class="fa fa-angle-double-up" ></i></a>
         </div>
@@ -834,31 +905,37 @@ system documentation and computer tech supporting.
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ asset('plugins/jquery.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-3.3.1/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.js') }}"></script>
+    <script src="{{ asset('public/plugins/bootstrap-3.3.1/js/bootstrap.min.js') }}"></script>
 
     <!-- maps js -->
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script> 
-    <script src="{{ asset('plugins/jquery.ui.map.js') }}"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnaRXO_URtinYZvUJ1WNLPgwQX-xfQhcs" type="text/javascript"></script> 
+    <script src="{{ asset('public/plugins/jquery.ui.map.js') }}"></script> 
     <!-- advanced easing options -->
-    <script src="{{ asset('plugins/jquery.easing-1.3.pack.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.easing-1.3.pack.js') }}"></script>
     <!-- parallax bg js -->
-    <script src="{{ asset('plugins/jquery.parallax-1.1.3.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.parallax-1.1.3.js') }}"></script>
     <!-- lightbox js -->
-    <script src="{{ asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <!-- typed animation-->
-    <script src="{{ asset('plugins/typed/typed.js') }}"></script>
+    <script src="{{ asset('public/plugins/typed/typed.js') }}"></script>
     <!-- easy chart-->
-    <script src="{{ asset('plugins/easypiechart/jquery.easypiechart.min.js ') }}"></script>
+    <script src="{{ asset('public/plugins/easypiechart/jquery.easypiechart.min.js ') }}"></script>
     <!-- simple Captcha -->
-    <script src="{{ asset('plugins/simpleCaptcha/jquery.simpleCaptcha.js ') }}"></script>
+    <script src="{{ asset('public/plugins/simpleCaptcha/jquery.simpleCaptcha.js ') }}"></script>
     <!-- simple Ajax Uploader -->
-    <script src="{{ asset('plugins/Simple-Ajax-Uploader/SimpleAjaxUploader.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/Simple-Ajax-Uploader/SimpleAjaxUploader.min.js') }}"></script>
     <!-- validate jquery-->
-    <script src="{{ asset('plugins/validator/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('public/plugins/validator/jquery.validate.min.js') }}"></script>
+
+    
 
     <!--=====================================================-->
     <!--configuration template-->
-    <script src="{{ asset('white/theme/js/theme.js') }}"></script>
+    <script src="{{ asset('public/white/theme/js/theme.js') }}"></script>
+
+
+<!-- TODO:: AJAX -->
+
   </body>
 </html>

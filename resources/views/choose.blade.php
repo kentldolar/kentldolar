@@ -7,15 +7,15 @@
         <title>KENT LOYD DOLAR - RESUME AND PORTFOLIO</title>
 
         <!--favicon-->
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
-        <link rel="icon" href="{{ asset('images/logo.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('public/images/logo.png') }}">
+        <link rel="icon" href="{{ asset('public/images/logok_rda_icon.ico') }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
 
         <!-- Styles -->
         <style>
-            @import url('http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
+            @import url('https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700, 800');
 
             .wf-notosansjapanese { 
                 font-family: "Noto Sans JP"; 
@@ -26,7 +26,7 @@
                 height: 100%;
                 line-height: 2;
                 font-size: 13px;
-                background-image: url( {{ asset('images/main-header.jpg') }} ) ;
+                background-image: url( {{ asset('public/images/main-header.jpg') }} ) ;
                 background-position: center;
                 background-repeat: no-repeat;
                 font-family: 'Open Sans';
@@ -170,7 +170,7 @@
               </div>
             </div>
 
-            <h4 class="wf-notosansjapanese">日本バージョン</h4>
+            <h4 class="wf-notosansjapanese">日本語バージョン</h4>
           </div>
         </a>
 
@@ -179,7 +179,7 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ asset('plugins/jquery.js') }}"></script>
+    <script src="{{ asset('public/plugins/jquery.js') }}"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
