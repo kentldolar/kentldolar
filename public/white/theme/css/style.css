@@ -95,7 +95,7 @@ h6 {
      03. HELPER
 ============================*/
 .bg1 {
-  background-image: url(../images/bg3.png);
+  background-image: url(../images/bg3.jpg);
 }
 .bg2 {
   background-image: url(../images/bg2.jpg);
@@ -1167,7 +1167,7 @@ textArea.form-flat {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../../../images/main-pic_c.png);
+  background-image: url(../../../images/main-pic.jpg);
   position: absolute;
   left: 0;
   top: 0;
