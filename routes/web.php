@@ -44,9 +44,8 @@ Route::get('/whitetemplate', function () {
 });
 
 // Controller
-
 Route::post('sendmail','TestController@ajaxTest');
 Route::get('sendmail','TestController@email');
 
-Route::post('upload','TestController@postUpload');
-Route::get('upload','TestController@getUpload');
+// Route::post('upload','TestController@postUpload');
+// Route::get('upload','TestController@getUpload');

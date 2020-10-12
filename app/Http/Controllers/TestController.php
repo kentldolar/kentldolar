@@ -59,10 +59,10 @@ class TestController extends Controller
                     $fileattsize = $request->fileattsize;
                     $recaptcha = $request->recaptcha;
 
-                    if ($ms && $from && $fullname && $recaptcha && ($fileattsize <= 204800/*1024x200*/) ) {
+                    if ($ms && $from && $fullname && $recaptcha && ($fileattsize <= 2048000000000/*1024x20000*/) ) {
                         Mail::send(new UploadMail());
                         return response()->json(['msg' => 'Thanks, I will get back to you ASAP']);    
-                    } else if ($fileattsize > 204800/*1024x200*/) {
+                    } else if ($fileattsize > 2048000000000/*1024x20000*/) {
                         return response()->json(['error' => 'error : The file must be less than 200KB']);
                     } else if( $recaptcha === null ){
                         return response()->json(['error' => 'Please complete the recaptcha to submit the form.']);

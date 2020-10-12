@@ -14,6 +14,7 @@
     initBtnFile();
     initMap();
     initHold();
+    // initCaptcha();
     initAjaxContactForm();
     initAjaxUploader();
   });
@@ -94,62 +95,62 @@
   }
 
   // ajax Uploader file
-  function initAjaxUploader() {
-    if ($('#hireForm').length > 0) {
-      $('#hireForm').validate();
-      $('#hireForm').submit(function() {
-        var el = $(this);
-        if (el.valid()) {
-          var formData = new FormData($(this)[0]);
-          formData.append('fulname',  $(this).find('#ful1').val());
-          formData.append('email', $(this).find('#eml1').val());
-          formData.append('mess', $(this).find('#mes1').val());
-          formData.append('recaptcha', $(this).find('.g-recaptcha-response').val());
-          formData.append('fileatt', $('#filat')[0].files[0]); 
-          formData.append('fileattsize', $('#filat')[0].files[0].size); 
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
-          $.ajax({
-            statusCode: {
-              500: function(xhr) {
-                if(window.console) console.log(xhr.responseText);
-              }
-            },
-            processData: false,
-            contentType: false,
-            cache : false,
-            dataType : 'json',
-            type: 'POST',
-            data: formData,
-            url: "upload",
-            beforeSend: function() {
-              el.find('.preload-submit').removeClass('hidden');
-              el.find('.message-submit').addClass('hidden');
-            },
-            success: function(upl) {
-            upl = JSON.stringify(upl);
-            upl = jQuery.parseJSON(upl);
-              setTimeout(function() {
-                el.find('.preload-submit').addClass('hidden');
+  // function initAjaxUploader() {
+  //   if ($('#hireForm').length > 0) {
+  //     $('#hireForm').validate();
+  //     $('#hireForm').submit(function() {
+  //       var el = $(this);
+  //       if (el.valid()) {
+  //         var formData = new FormData($(this)[0]);
+  //         formData.append('fulname',  $(this).find('#ful1').val());
+  //         formData.append('email', $(this).find('#eml1').val());
+  //         formData.append('mess', $(this).find('#mes1').val());
+  //         formData.append('recaptcha', $(this).find('.g-recaptcha-response').val());
+  //         formData.append('fileatt', $('#filat')[0].files[0]); 
+  //         formData.append('fileattsize', $('#filat')[0].files[0].size); 
+  //         $.ajaxSetup({
+  //           headers: {
+  //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //           }
+  //         });
+  //         $.ajax({
+  //           statusCode: {
+  //             500: function(xhr) {
+  //               if(window.console) console.log(xhr.responseText);
+  //             }
+  //           },
+  //           processData: false,
+  //           contentType: false,
+  //           cache : false,
+  //           dataType : 'json',
+  //           type: 'POST',
+  //           data: formData,
+  //           url: "upload",
+  //           beforeSend: function() {
+  //             el.find('.preload-submit').removeClass('hidden');
+  //             el.find('.message-submit').addClass('hidden');
+  //           },
+  //           success: function(upl) {
+  //           upl = JSON.stringify(upl);
+  //           upl = jQuery.parseJSON(upl);
+  //             setTimeout(function() {
+  //               el.find('.preload-submit').addClass('hidden');
                 
-                if (upl.msg) {
-                  grecaptcha.reset(widgetId2);
-                  el.trigger('reset');
-                  el.find('.message-submit').html(upl.msg).removeClass('hidden');
-                } else {
-                  el.find('.message-submit').html(upl.error).removeClass('hidden');
-                }
-              }, 1000)
-            }
-          });
-        }
-        return false;
-      });
-    }
-  }
+  //               if (upl.msg) {
+  //                 grecaptcha.reset(widgetId2);
+  //                 el.trigger('reset');
+  //                 el.find('.message-submit').html(upl.msg).removeClass('hidden');
+  //               } else {
+  //                 el.find('.message-submit').html(upl.error).removeClass('hidden');
+  //               }
+  //             }, 1000)
+  //           }
+  //         });
+  //       }
+  //       return false;
+  //     });
+  //   }
+  // }
 
   //Typed Animation
   function initTyped() {
@@ -395,5 +396,21 @@
       }
     });
   }
+
+  // function initCaptcha() {
+  //   $('#mycaptcha').simpleCaptcha({
+  //     allowRefresh: false,
+  //     scriptPath: "assets/plugins/simpleCaptcha/simpleCaptcha.php"
+  //   });
+
+  //   $('#mycaptcha').bind('ready.simpleCaptcha', function(hashSelected) {
+  //     $('#captcha1,#captcha2').html($('#mycaptcha-wrap').html()).find('.mycaptcha1').removeAttr('id');
+  //     $('#captcha1,#captcha2').find('.captchaImages img.captchaImage').click(function() {
+  //       $('#captcha1,#captcha2').find('.captchaImages img.captchaImage').removeClass('simpleCaptchaSelected');
+  //       $(this).addClass('simpleCaptchaSelected');
+  //       $('.simpleCaptchaInput').val($(this).data('hash'));
+  //     });
+  //   });
+  // }
 
 })(jQuery);

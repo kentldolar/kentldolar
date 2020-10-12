@@ -24,28 +24,6 @@
         <link href="{{ asset('public/plugins/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
         <!-- simple Captcha-->
         <link href="{{ asset('public/plugins/simpleCaptcha/jquery.simpleCaptcha.css') }}" rel="stylesheet">
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-        </script>
-        <script type="text/javascript">
-          var verifyCallback = function(response) {
-            alert(response);
-          };
-          var widgetId1;
-          var widgetId2;
-          var onloadCallback = function() {
-            // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
-            // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
-            widgetId1 = grecaptcha.render(document.getElementById('captcha1'), {
-              'sitekey' : "{{env('CAPTCHA_KEY')}}",
-              'theme' : 'light'
-            });
-            widgetId2 = grecaptcha.render(document.getElementById('captcha2'), {
-              'sitekey' : "{{env('CAPTCHA_KEY')}}",
-              'theme' : 'light'
-            });
-          };
-        </script>
         <!-- Themes styles-->
         <link href="{{ asset('public/white/theme/css/style.css') }}" rel="stylesheet">
     </head>
@@ -210,12 +188,9 @@
                 <div class="desc">
                   <h5 class="text-uppercase color-dark text-bold">Cloud Engineer</h5>
                   <p class="font-alt color-dark"><a href="https://www.biosjp.com/corporate.php">BiOS Inc.</a>, Nishi-shinjuku, Shinjuku City, Tokyo 160-0023</p>
-                  <p>Contract project handling <em>AWS Server middleware and user setups and implementations</em>, <em>Creating documents for procedure/system developments</em>, has good experience in <em>AWS and Google Cloud speech to
-text and Natural Language API</em>,<em> Monitoring, Escalating server errors and malfunctions</em>,<strong><em>Created Serverless application (Audio Speech to Text Project and Natural language)</em></strong>,
-Troubleshooting, Security testing, installing middlewares and Creating Linux User for our clients server using
-AWS. <em>Created CI/CD for development and production environment using Github, AWS Codebuild, AWS
-CodePipeline and AWS CodeDeploy which I use in our serverless application External Monitoring using
-python3.8 and Speechtotext and Natural Language using python3.8 wordpress using yml file.</em>
+                  <p>Contract project, <strong><em>created Serverless application (External Monitoring, Client's AWS-Google Speech to Text API with FFMPEG Codes and Google Natural language Project API)</em></strong>,
+Troubleshooting, security testing, installing middlewares and creating linux users for our clients.<em>using CI/CD for development and using Github, Docker, AWS Codebuild, AWS
+CodePipeline and AWS CodeDeploy.</em>
 </p>
                   <p class="font-alt color-dark">  June 2019 - Aug 2020</p>
                 </div>
@@ -772,7 +747,7 @@ system documentation and computer tech support, with the help of <a href="https:
               <!--TABS CONTACT-->
               <ul id="myTab" class="nav nav-tabs flat-nav-tabs" role="tablist">
                 <li class="active"><a href="#tab0" role="tab" data-toggle="tab">Contact Me</a></li>
-                <li><a href="#tab1" role="tab" data-toggle="tab">Hire Me</a></li>
+                <!-- <li><a href="#tab1" role="tab" data-toggle="tab">Hire Me</a></li> -->
               </ul>
 
               <div id="myTabContent" class="tab-content flat-tab-content">
@@ -808,46 +783,7 @@ system documentation and computer tech support, with the help of <a href="https:
                     </div>
                   </form>
                 </div>
-                <div class="tab-pane fade" id="tab1">
-                  <!-- <form method="post" id="id="hireForm"" name="hireForm"> -->
-                  {!! Form::open(['url'=>'upload','files'=>true,'id'=>'hireForm','enctype'=>"multipart/form-data"]); !!}
-                    <input type="hidden" name="subject" value="Message Hire Form">
-                    <input type="hidden" name="file" id="file-att" value="">
-                    <div class="form-group">
-                      <label>Your Name (*)</label>
-                      <input id="ful1" type="text" class="form-control form-flat" name="fullname" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Email (*)</label>
-                      <input id="eml1" type="email" class="form-control form-flat" name="email" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Short Description About of Project (*)</label>
-                      <textarea id="mes1" class="form-control form-flat" name="message" rows="8" required></textarea>
-                    </div>
-
-                    <div class="form-group">                    
-                      <label>Attach Your Document <span class="display-block color-dark">(only .pdf  allowed , max size 200Kb)</span></label>
-                      {!!Form::file('fileatt',['id' => 'filat', 'accept'=>'.pdf','value'=>'204800' ]); !!}
-                      @if(count($errors)>0)
-                      <label style="color:red;" for="">{{$errors->first('fileatt')}}</label>
-                      @endif
-                    </div>
-                    <div class="form-group">
-                      <div id="captcha2"></div>
-                      @if($errors->has('g-recaptcha-response'))
-                        <span class="invalid-feedback" style="display:block;"><strong>{{$errors->first('g-recaptcha-response')}}</strong></span>
-                      @endif
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-flat-solid primary-btn">Send Request</button>
-                    </div>
-                    <div class="form-group">
-                      <div class="preload-submit hidden"><hr/> <i class="fa fa-spinner fa-spin"></i> Please Wait ...</div>
-                      <div class="message-submit error hidden"></div>
-                    </div>
-                  </form>
-                </div>
+          
               </div><!--End Tabs-->
             </div>
           </div>
@@ -903,7 +839,28 @@ system documentation and computer tech support, with the help of <a href="https:
       <div id="mycaptcha" class="mycaptcha1"></div>
     </div>
 
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+    <script type="text/javascript">
+      var verifyCallback = function(response) {
+        alert(response);
+      };
+      var widgetId1;
+      var widgetId2;
+      var onloadCallback = function() {
+        // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+        // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+        widgetId1 = grecaptcha.render(document.getElementById('captcha1'), {
+          'sitekey' : "{{env('CAPTCHA_KEY')}}",
+          'theme' : 'light'
+        });
+        // widgetId2 = grecaptcha.render(document.getElementById('captcha2'), {
+        //   'sitekey' : "{{env('CAPTCHA_KEY')}}",
+        //   'theme' : 'light'
+        // });
+      };
+    </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{ asset('public/plugins/jquery.js') }}"></script>
     <script src="{{ asset('public/plugins/bootstrap-3.3.1/js/bootstrap.min.js') }}"></script>
