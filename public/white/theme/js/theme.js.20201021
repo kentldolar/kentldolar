@@ -16,7 +16,7 @@
     initHold();
     // initCaptcha();
     initAjaxContactForm();
-    // initAjaxUploader();
+    initAjaxUploader();
   });
 
   //Run function When PACE (page loader) hide
